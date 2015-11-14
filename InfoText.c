@@ -7,57 +7,21 @@
 #include "skinColor.h"
 #include "dlg.h"
 #include "28.h"
-
+#include "info.h"
 #define ID_WINDIW_0 (GUI_ID_USER + 0x00)
 
 #define ID_MULTIEDIT_0   (GUI_ID_USER + 0x10)
 #define ID_BUTTON_0   (GUI_ID_USER + 0x11)
-#define PAGE  0x0401 
-#define PAGE_NUM  12
-WM_MESSAGE TurnPage;
-CHAR *str = {"Warn1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n"};
+#define ID_LV_0 (GUI_ID_USER + 0x02)
+SCROLLBAR_Handle hScrollbarv;
+SCROLLBAR_Handle hScrollbarh;
 const GUI_RECT Scrollbar = {709,0,719,355}; 
 GUI_RECT ScrollbarI ;
-//			hMultiEdit = MULTIEDIT_CreateEx(40,60,720,350,InfoText,WM_CF_SHOW,MULTIEDIT_CF_AUTOSCROLLBAR_V,0,0,i);
-
-static char Info_Page (CHAR *str)  //返回信息的总页数
-{
-	CHAR strindex =0;
-	CHAR count = 0;
-	for (strindex = 0; str[strindex] != NULL; strindex++)
-	{
-		if (str[strindex] == '\n')
-			count++;
-	}
-	return count/PAGE_NUM;
-}
-
-static void DispInfo(CHAR ThisPage,CHAR* str) //更改MULTEDIT文本信息
-{
-	CHAR str1[50] = {""};
-	CHAR index = 0;
-	CHAR index1 = 0;
-	CHAR row= 0;
-INFO ("discount = %d",ThisPage);
-	for (index = 0,index1 = 0; str[index] != NULL;index++)
-	{
-			if (str[index] == '\n')
-				row++;
-			if (row >= ThisPage*PAGE_NUM)
-			{
-				if (ThisPage > 0 && index1 == 0)
-					index++;
-				str1[index1] = str[index];
-				index1++;
-			}
-	}
-	MULTIEDIT_SetText(WM_GetDialogItem(InfoText, ID_MULTIEDIT_0),str1);
-}
 
 static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
   { WINDOW_CreateIndirect, "ETWin", ID_WINDIW_0, 0,0, 800, 480, 0, 0x0, 0 },
-	{ BUTTON_CreateIndirect, "Button",ID_BUTTON_0,40,10,100,30,0,0,0},
-  { MULTIEDIT_CreateIndirect,"mEdit", ID_MULTIEDIT_0, 40, 55, 720, 360, 0, 0, 0}
+		{ BUTTON_CreateIndirect, "Button",ID_BUTTON_0,90,10,50,30,0,0,0},
+  { MULTIEDIT_CreateIndirect,"mEdit", ID_MULTIEDIT_0, 40, 70, 720, 345, 0, 0, 0}
 	
 };
 
@@ -67,38 +31,34 @@ static void InfoButton (WM_MESSAGE *pMsg)
 	static char Pagecount = 0; // 总的信息页数
 	static char thisPage = 0;			//当前所处的页数
 	WM_KEY_INFO *Info;
+	INFO *InfoT;
+	int16_t i = 0;
+	int16_t SelRow = 0;
 	switch (pMsg->MsgId)
 	{
+			
 		case WM_KEY:
 			Info = (WM_KEY_INFO*)pMsg->Data.p;
 		switch (Info->Key)
 		{
+			case GUI_KEY_LEFT:
+				SCROLLBAR_AddValue(hScrollbarh,-50);
+				break;
+			case GUI_KEY_RIGHT:
+				SCROLLBAR_AddValue(hScrollbarh,50);
+				break;
+			
 			case GUI_KEY_BACKSPACE:
-				INFO ("backtomain");
 				WM_BringToTop(mainwin);
 				WM_SetFocus (mainwin);
 				break;
 			
 			case GUI_KEY_UP:
-				
-				TurnPage.MsgId = PAGE;
-				if (thisPage >0)
-					thisPage--;
-				TurnPage.Data.v = thisPage;
-				TurnPage.hWin = WM_GetDialogItem(InfoText, ID_MULTIEDIT_0);
-				WM_SendMessage(TurnPage.hWin,&TurnPage);				
+				SCROLLBAR_AddValue(hScrollbarv,-11);
 				break;
 			
 			case GUI_KEY_DOWN:
-				INFO ("SENDMESSAGE");
-				Pagecount = Info_Page(str); 
-				TurnPage.MsgId = PAGE;
-				if (thisPage < Pagecount)
-					thisPage++;
-INFO ("thisPage = %d,count = %d",thisPage,Pagecount);				
-				TurnPage.Data.v = thisPage;
-				TurnPage.hWin = WM_GetDialogItem(InfoText, ID_MULTIEDIT_0);
-				WM_SendMessage(TurnPage.hWin,&TurnPage);
+				SCROLLBAR_AddValue(hScrollbarv,11);
 				break;
 		}
 		break;
@@ -109,55 +69,6 @@ INFO ("thisPage = %d,count = %d",thisPage,Pagecount);
 	}
 }
 
-static void myMultiEdit(WM_MESSAGE *pMsg)
-{
-	const WM_KEY_INFO *Info;
-	static CHAR Page = 0;
-	WM_HWIN hWin = pMsg->hWin;
-	//INFO ("MSG = %d",pMsg->MsgId);
-	switch (pMsg->MsgId)
-	{
-		case PAGE:
-			DispInfo (TurnPage.Data.v ,str);
-		break;
-
-		case WM_POST_PAINT :   //绘制滚动条
-			Page = Info_Page(str);
-			switch (TurnPage.Data.v)  
-			{
-				case 0:
-					ScrollbarI.x0 = 709;
-					ScrollbarI.y0 = 0;
-					ScrollbarI.x1 = 725;
-					ScrollbarI.y1 =355/(Page+1);
-
-					GUI_SetColor(GUI_GRAY);
-					GUI_FillRectEx(&Scrollbar);
-					GUI_SetColor(GUI_RED);
-					GUI_FillRectEx(&ScrollbarI);					
-					break;
-				case 1:
-					ScrollbarI.x0 = 709;
-					ScrollbarI.y0 = 355/(Page+1);
-					ScrollbarI.x1 = 725;
-					ScrollbarI.y1 =2*(355/(Page+1));
-	
-					GUI_SetColor(GUI_GRAY);
-					GUI_FillRectEx(&Scrollbar);
-					GUI_SetColor(GUI_RED);
-					GUI_FillRectEx(&ScrollbarI);						
-					break;
-			}
-			GUI_SetColor (GUI_BLACK);
-			GUI_DispStringAt("误字符率:",580,5);
-			GUI_SetPenSize (2);
-			GUI_DrawLine(0,355,720,355);
-			break;
-		default:
-			MULTIEDIT_Callback(pMsg);
-		break;
-	}
-}
 
 static void _cbDialog(WM_MESSAGE *pMsg)
 {
@@ -174,7 +85,7 @@ static void _cbDialog(WM_MESSAGE *pMsg)
 			GUI_SetBkColor(GUI_WHITE);
 			GUI_Clear();
 			GUI_SetColor (GUI_BLACK);
-			GUI_DispStringAt("信息0",40,10);
+			GUI_DispStringAt("信息",40,10);
 			GUI_AA_DrawLine(190,0,220,40);
 			GUI_AA_DrawLine(220,40,800,40);
 			GUI_DispStringAt("距发射站台距离:",580,410);
@@ -184,7 +95,7 @@ static void _cbDialog(WM_MESSAGE *pMsg)
 			break;
 		case WM_INIT_DIALOG:
 			
- 			hButton = WM_GetDialogItem (hWin,ID_BUTTON_0);
+ 		hButton = WM_GetDialogItem (hWin,ID_BUTTON_0);
 			BUTTON_SetBkColor (hButton,BUTTON_CI_UNPRESSED,GUI_WHITE);
 			BUTTON_SetTextColor (hButton,BUTTON_CI_UNPRESSED,GUI_BLACK);
 			BUTTON_SetTextAlign (hButton,GUI_TA_HCENTER|GUI_TA_VCENTER);
@@ -193,13 +104,13 @@ static void _cbDialog(WM_MESSAGE *pMsg)
 			WIDGET_SetEffect (hButton,&WIDGET_Effect_None);
 			WM_SetCallback (hButton,&InfoButton);	
 		
-		  hMultiEdit  = WM_GetDialogItem(pMsg->hWin, ID_MULTIEDIT_0);
+		 hMultiEdit  = WM_GetDialogItem(pMsg->hWin, ID_MULTIEDIT_0);
 			MULTIEDIT_SetFont(hMultiEdit,&GUI_Font30);
 			MULTIEDIT_SetReadOnly(hMultiEdit,0);
 			MULTIEDIT_SetBkColor (hMultiEdit,MULTIEDIT_CI_READONLY,GUI_YELLOW);
-		  MULTIEDIT_SetText(hMultiEdit,str );
-		  MULTIEDIT_SetTextColor(hMultiEdit, MULTIEDIT_CI_READONLY,GUI_RED);
- 			WM_SetCallback(hMultiEdit,&myMultiEdit);
+		 MULTIEDIT_SetTextColor(hMultiEdit, MULTIEDIT_CI_READONLY,GUI_RED);
+			MULTIEDIT_SetWrapWord(hMultiEdit);
+			hScrollbarv = SCROLLBAR_CreateAttached(hMultiEdit,SCROLLBAR_CF_VERTICAL);
 			break;
 		case WM_KEY:
 			Info = (WM_KEY_INFO *)pMsg->Data.p;

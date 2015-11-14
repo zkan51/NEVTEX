@@ -7,53 +7,164 @@
 #include "skinColor.h"
 #include "dlg.h"
 #include "28.h"
-
+#include "str.h"
+#include "info.h"
 #define ID_WINDIW_0 (GUI_ID_USER + 0x00)
-#define ID_BUTTON_0	(GUI_ID_USER + 0x01)
+#define ID_BUTTON_0	(GUI_ID_USER + 0x011)
 #define ID_LV_0	(GUI_ID_USER + 0x02)
+#define ID_MULTIEDIT_0 (GUI_ID_USER + 0x10)
+
+
 WM_HWIN mainwin;
 WM_HWIN hListview;
 WM_HWIN hButton;
 WM_HWIN InfoText;
-char InfoType = 0;
-static const GUI_RECT InfoRect = {0,0,800,480};
- GUI_ConstString Alldata[8][7] = {
-	{"018",	"QA74","2015/09/19","13:02","4209.5KHz","","新信息"},
-	{"017","AL33","2015/09/19","10:02","518KHz","重要","新信息"},
-	{"018",	"QA74","2015/09/19","13:02","4209.5KHz","搜救","新信息"},
-	{"018",	"QA74","2015/09/19","13:02","4209.5KHz","搜救","新信息"},
-	{"018",	"QA74","2015/09/19","13:02","4209.5KHz","重要",""},
-	{"018",	"QA74","2015/09/19","13:02","4209.5KHz","重要",""},
-	{"018",	"QA74","2015/09/19","13:02","4209.5KHz","",""},
-	{"018",	"QA74","2015/09/19","13:02","4209.5KHz","",""},
+SCROLLBAR_Handle LISTVSCR;
+CHAR thispage = 1;
+CHAR pageNum = 0;
+int rowNum = 16;
+static char InfoType = 0;
+static INFO * Info;
+extern void Pageit (char*);
+static int rowindex = 0;
+static const GUI_RECT PageRect = {560,415,770,450};
+INFO TESTDATA[16] = {
+	{1,"EA31",20151111,1303,INT,INFO_Type_None,INFO_STT_CSTOFF,0,strt[0]},
+	{2,"LA56",20150111,303,LOC1,INFO_Type_None,INFO_STT_Choosen,0,strt[1]},
+	{3,"LA46",20151101,1303,LOC1,INFO_Type_VIP,INFO_STT_None,0,strt[2]},
+	{4,"ME75",20151111,1303,LOC2,INFO_Type_VIP,INFO_STT_None,0,strt[3]},
+	{5,"MA50",20151112,1303,CHS,INFO_Type_Rscue,INFO_STT_None,0,strt[4]},
+	{6,"OA29",20151112,1303,INT,INFO_Type_Rscue,INFO_STT_None,0,strt[5]},
+	{7,"PA96",20151112,1303,INT,INFO_Type_Rscue,INFO_STT_None,0,strt[6]},
+	{8,"QE57",20151112,1303,INT,INFO_Type_None,INFO_STT_None,0,strt[7]},
+	{9,"QE58",20151112,1303,INT,INFO_Type_None,INFO_STT_None,0,strt[7]},
+	{10,"QE59",20151112,1303,INT,INFO_Type_None,INFO_STT_None,0,strt[7]},
+	{11,"MA50",20151112,1303,CHS,INFO_Type_Rscue,INFO_STT_None,0,strt[4]},
+	{12,"OA29",20151112,1303,INT,INFO_Type_Rscue,INFO_STT_None,0,strt[5]},
+	{13,"PA96",20151112,1303,INT,INFO_Type_Rscue,INFO_STT_None,0,strt[6]},
+	{14,"QE57",20151112,1303,INT,INFO_Type_None,INFO_STT_None,0,strt[7]},
+	{15,"QE58",20151112,1303,INT,INFO_Type_None,INFO_STT_None,1,strt[7]},
+	{16,"QE59",20151112,1303,INT,INFO_Type_None,INFO_STT_New,1,strt[7]},
 };
 
 static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
   { WINDOW_CreateIndirect, "ETWin", ID_WINDIW_0, 0,0, 800, 480, 0, 0x0, 0 },
-	{ BUTTON_CreateIndirect, "Button",ID_BUTTON_0,40,10,100,30,0,0,0},
+	 { BUTTON_CreateIndirect, "Button",ID_BUTTON_0,40,10,100,30,0,0,0},
   { LISTVIEW_CreateIndirect, "LV", ID_LV_0,40,60,720,350,0,0,0}
 };
 
+
 //
-//选择信息类型
 //
-void InfoTypeChange(CHAR index,CHAR * infotype)
+//
+const void Infoinit(INFO *Info,char i)
 {
-	char row_index,row,column;
-	for (row_index = 0; row_index<8;row_index++) //删除所有的行
-		LISTVIEW_DeleteRow(hListview,0);
-	
-	for (row_index = 0,row=0; row_index<8;row_index++) 
-	{
-		if( strncmp (Alldata[row_index][index],infotype,4) == 0)  //判断要添加的行
+		static int Year=0,day=0,month=0,hour=0,minute=0;
+		
+		LISTVIEW_AddRow(hListview,NULL);	
+		sprintf(pStrBuf, (Info->ID)<10?"00%d":(Info->ID)<100?"0%d":"%d", Info->ID);
+		LISTVIEW_SetItemText (hListview,0,i,pStrBuf);		
+		sprintf(pStrBuf, "%s", Info->codeFormat);
+		LISTVIEW_SetItemText (hListview,1,i,pStrBuf);	
+	 
+		Year = Info->date/10000;
+		month = ((Info->date)%10000)/100;
+		day = (Info->date)%100;
+		sprintf (pStrBuf,month<10?"%d/0%d/%d":day<10?"%d/%d/0%d":"%d/%d/%d",Year,month,day);
+		LISTVIEW_SetItemText (hListview,2,i,pStrBuf);
+		hour = (Info->time)/100;
+		minute = (Info->time)%100;
+		sprintf(pStrBuf,(hour<10 && minute<10)?"0%d:0%d":hour<10?"0%d:%d":minute<10?"%d:0%d":"%d:%d",hour,minute);
+		LISTVIEW_SetItemText(hListview, 3, i,  pStrBuf);
+		LISTVIEW_SetItemText(hListview, 4, i, Info->chnl==INT?"518KHz":Info->chnl==LOC1?"490KHz":Info->chnl==LOC2?"4209.5KHz":"486KHz");
+		LISTVIEW_SetItemText(hListview, 5, i, Info->type==INFO_Type_None?"":Info->type==INFO_Type_VIP?"重要":"搜救");
+	 if (Info->isLocked == 0)
 		{
-			LISTVIEW_AddRow (hListview,NULL);												//添加所需的行
-			for (column = 0; column < 7; column++)                  //填充信息
-				LISTVIEW_SetItemText(hListview,column,row,Alldata[row_index][column]);
-			row++;
+			if (Info->state == INFO_STT_New)
+			{
+				LISTVIEW_SetItemText(hListview,6,i,"新信息");
+			}
+			else LISTVIEW_SetItemText(hListview,6,i,"");
 		}
-	}
+		else if(Info->isLocked == 1)
+		{
+			if (Info->state == INFO_STT_New)
+			{
+				LISTVIEW_SetItemText(hListview,6,i,"新信息 锁");
+			}
+			else LISTVIEW_SetItemText(hListview,6,i,"           锁");
+		}
+		//LISTVIEW_SetItemText(hListview, 6, i, (Info->state==INFO_STT_New && Info->isLocked == 0)?"新信息":(Info->state==INFO_STT_New && Info->isLocked == 1)?"新信息锁":);
 }
+
+//
+//信息类型
+//
+const void InfoSel (char Type,CHAR thpage)
+{
+	char index = 0;
+	int16_t addrow = 0;
+ Info  = INFO_LIST_Reset();
+	rowindex = 0;
+ if(pInfoTail)
+ do
+ {	
+		if (Type == 0)  //所有信息
+		{
+			if(rowindex >= (thispage-1)*8 && rowindex < ((thispage-1)*8+8))
+			{
+				if (rowindex == (thispage-1)*8)
+					LISTVIEW_DeleteAllRows(hListview);
+				Infoinit(Info,addrow);
+				addrow++;
+			}
+			rowindex++;			
+		}
+		else if (Type == 1) //重要信息
+		{
+			if(Info->type == INFO_Type_VIP)
+			{
+				if(rowindex >= (thispage-1)*8 && rowindex < ((thispage-1)*8+8))
+				{
+					if (rowindex == (thispage-1)*8)
+						LISTVIEW_DeleteAllRows(hListview);
+					Infoinit(Info,addrow);
+					addrow++;
+				}
+			rowindex++;	
+			}
+		}
+		else if (Type == 2) //新信息
+		{
+			if (Info->state == INFO_STT_New)
+			{	INFO ("NEW");
+				if(rowindex >= (thispage-1)*8 && rowindex < ((thispage-1)*8+8))
+				{
+					if (rowindex == (thispage-1)*8)
+						LISTVIEW_DeleteAllRows(hListview);
+					Infoinit(Info,addrow);
+					addrow++;
+				}
+				rowindex++;	
+			}
+		}
+		else if (Type == 3) //搜救信息
+		{
+			if (Info->type == INFO_Type_Rscue)
+			{
+			if(rowindex >= (thispage-1)*8 && rowindex < ((thispage-1)*8+8))
+			{
+				if (rowindex == (thispage-1)*8)
+					LISTVIEW_DeleteAllRows(hListview);
+				Infoinit(Info,addrow);
+				addrow++;
+			}
+			rowindex++;	
+			}	
+		}
+ }while(Info = INFO_LIST_hasPrev());
+}
+
 
 //
 // Buttoncallback;
@@ -61,22 +172,41 @@ void InfoTypeChange(CHAR index,CHAR * infotype)
 void mybutton (WM_MESSAGE *pMsg)
 {
 	WM_HWIN hWin;
-	WM_KEY_INFO *Info;
-	CHAR column,row,row_index,del_row;
+	WM_KEY_INFO *pInfo;
+	int column,row,row_index,del_row;
 	int flag;
 	hWin = pMsg->hWin;
+//INFO ("MSG = %d",pMsg->MsgId);
 	switch (pMsg->MsgId)
 	{
+		case WM_SET_FOCUS:
+		if (pMsg->Data.v)
+		{
+					BUTTON_SetBkColor(hButton,BUTTON_CI_UNPRESSED,GUI_GRAY);
+					BUTTON_SetFocusColor(hButton,GUI_GRAY);
+		}
+		else 	
+		{
+			BUTTON_SetBkColor(hButton,BUTTON_CI_UNPRESSED,GUI_WHITE);//BUTTON_SetTextColor (hButton,BUTTON_CI_UNPRESSED,GUI_BLACK);
+			BUTTON_SetFocusColor(hButton,GUI_WHITE);
+		}
+			BUTTON_Callback(pMsg);
+		break;
+		
 		case WM_KEY:
-			Info = (WM_KEY_INFO*)pMsg->Data.p;
-		switch (Info->Key){
-
-			
+			pInfo = (WM_KEY_INFO*)pMsg->Data.p;
+		switch (pInfo->Key)
+		{
 			case GUI_KEY_UP:
 				break;
 			case GUI_KEY_DOWN:
-				WM_SetFocus(hListview);
-				LISTVIEW_SetSel(hListview,0);
+				if (LISTVIEW_GetNumRows(hListview))
+				{
+					thispage = 1;
+					WM_SetFocus(hListview);
+					LISTVIEW_SetSel(hListview,0);
+					WM_InvalidateRect(mainwin,&PageRect);  //刷新页数提示
+				}
 				break;
 			
 			case GUI_KEY_LEFT:
@@ -87,31 +217,38 @@ void mybutton (WM_MESSAGE *pMsg)
 				{
 					case 0:
 					BUTTON_SetText(hWin,"所有信息");
-					row = LISTVIEW_GetNumRows(hListview);
-					for (;row<8;row++)
-					LISTVIEW_AddRow (hListview,NULL);
-					for (row = 0; row<8; row++)
-					{
-						for (column = 0; column <7; column++)
-							LISTVIEW_SetItemText(hListview,column,row,Alldata[row][column]);
-					}
+					LISTVIEW_DeleteAllRows(hListview);
+					InfoSel(0,1);
 					break;
 					
 					case 1:
 						BUTTON_SetText(hWin,"重要信息");
-						InfoTypeChange (5,"重要信息");
+					LISTVIEW_DeleteAllRows(hListview);
+						InfoSel(1,1);
  					break;
 					
 					case 2:
 						BUTTON_SetText(hWin,"新信息");
-						InfoTypeChange (6,"新信息");
+					LISTVIEW_DeleteAllRows(hListview);
+						InfoSel(2,1);
 					break;
 					
 					case 3:
 						BUTTON_SetText(hWin,"搜救信息");
-						InfoTypeChange(5,"搜救信息");
+						LISTVIEW_DeleteAllRows(hListview);
+						InfoSel(3,1);					
 						break;
 				}
+				if (rowindex<8)
+				{	
+					pageNum = 1;
+				}
+				else if (rowindex%8 == 0)
+					pageNum = rowindex/8;
+				else pageNum = rowindex/8+1;
+				
+				thispage = 1;
+				WM_InvalidateRect(mainwin,&PageRect);//刷新页数提示
 				break;
 			case GUI_KEY_RIGHT:
 				InfoType++;
@@ -121,31 +258,39 @@ void mybutton (WM_MESSAGE *pMsg)
 				{
 					case 0:
 						BUTTON_SetText(hWin,"所有信息");
-					row = LISTVIEW_GetNumRows(hListview);
-					for (;row<8;row++)
-					LISTVIEW_AddRow (hListview,NULL);
-					for (row = 0; row<8; row++)
-					{
-						for (column = 0; column <7; column++)
-							LISTVIEW_SetItemText(hListview,column,row,Alldata[row][column]);
-					}					
+						LISTVIEW_DeleteAllRows(hListview);
+					 InfoSel(0,1);
 					break;
 					
 					case 1:
 						BUTTON_SetText(hWin,"重要信息");
-						InfoTypeChange(5,"重要信息");
+						LISTVIEW_DeleteAllRows(hListview);
+					 InfoSel(1,1);
 					break;
 					
 					case 2:
 						BUTTON_SetText(hWin,"新信息");
-						InfoTypeChange(6,"新信息");
+						LISTVIEW_DeleteAllRows(hListview);
+					 InfoSel(2,1);
 					break;
 					
 					case 3:
 						BUTTON_SetText(hWin,"搜救信息");
-						InfoTypeChange(5,"搜救信息");			
+						LISTVIEW_DeleteAllRows(hListview);
+					 InfoSel(3,1);		
 						break;
-			}
+				}
+				if (rowindex<8)
+				{	
+					pageNum = 1;
+				}
+				else if (rowindex%8 == 0)
+					pageNum = rowindex/8;
+				else pageNum = rowindex/8+1;
+				
+				thispage = 1;				
+				WM_InvalidateRect(mainwin,&PageRect);//刷新页数提示
+				break;
 		}
 			break;
 		
@@ -154,6 +299,7 @@ void mybutton (WM_MESSAGE *pMsg)
 		break;
 	}
 }
+
 //
 //ListviewCallback
 //
@@ -164,48 +310,120 @@ static void mylistview(WM_MESSAGE *pMsg)
 	CHAR RowNum;
 	char SelRow;
 	CHAR RowLineIndex;
-	const WM_KEY_INFO *Info;
+	const WM_KEY_INFO *pInfo;
+	int ID;
+	int16_t  i  = 0;
+	static char addrow = 0;
 	hWin = pMsg->hWin;
+
+	//INFO ("MSG = %d",pMsg->MsgId);
 	switch (pMsg->MsgId)
 	{
 		case WM_KEY:
-			Info = (WM_KEY_INFO*)pMsg->Data.p;
-		switch (Info->Key)
+			pInfo = (WM_KEY_INFO*)pMsg->Data.p;
+		switch (pInfo->Key)
 		{
+			case GUI_KEY_MENU:								
+				
+					SelRow = LISTVIEW_GetSel(hListview);
+					LISTVIEW_GetItemText(hListview,0,SelRow,pStrBuf,5);
+					ID = atoi(pStrBuf);
+					Info  = pInfoHeader;
+					if (pInfoHeader)
+					do 
+					{
+						if (Info->ID == ID)
+						{
+							if (Info->isLocked == 0)
+							{                                  
+								LISTVIEW_SetItemText(hListview,6,SelRow,Info->state == INFO_STT_New?"新信息 锁":"           锁");
+									Info->isLocked = 1;
+							}
+							else if (Info->isLocked == 1)
+							{
+								LISTVIEW_SetItemText(hListview,6,SelRow,Info->state == INFO_STT_New?"新信息":"");
+								Info->isLocked = 0;
+							}
+							break;
+						}
+					}while (Info = Info->pNext);
+			 break;
+					 
 			case GUI_KEY_DOWN:
-				SelRow = LISTVIEW_GetSel(hListview);
-			if (SelRow == 7) //翻页条件
-			{INFO("SELROW");}
-				break;
-			case GUI_KEY_UP:
-				SelRow = LISTVIEW_GetSel(hListview);
-			INFO("SELROW = %d",SelRow);
- 				if (0 == LISTVIEW_GetSel(hWin))
+
+ 				SelRow = LISTVIEW_GetSel(hListview);
+				
+				if (thispage < pageNum)
 				{
-					WM_SetFocus(hButton);
+					if (SelRow == 7)
+					{
+						thispage++;
+						InfoSel(InfoType,thispage);
+						WM_InvalidateRect(mainwin,&PageRect);
+					}
 				}
 				break;
+				
+			case GUI_KEY_UP:
+				
+
+					SelRow = LISTVIEW_GetSel(hListview);
+
+					if(SelRow == 0 && thispage == 1)
+					{
+						WM_SetFocus(hButton);
+					}
+
+					if (thispage>1)
+					{
+						if(SelRow == 0)
+						{
+							thispage--;
+							InfoSel(InfoType,thispage);
+							WM_InvalidateRect(mainwin,&PageRect);
+							LISTVIEW_SetSel(hListview,7);
+							INFO ("PAGETURN");
+						}
+					}
+					
+				break;
+					
 				case GUI_KEY_BACKSPACE:
+					SelRow = LISTVIEW_GetSel(hListview);
 					WM_SetFocus(hButton);
 				break;
 				
 				case GUI_KEY_ENTER:
-					INFO ("ENTER");
+					SelRow = LISTVIEW_GetSel(hListview);
+					LISTVIEW_GetItemText(hListview,0,SelRow,pStrBuf,5);
+					ID = atoi(pStrBuf);
+				INFO ("ID = %d",ID);
+				 Info  = pInfoHeader;
+					if (pInfoHeader)
+					do 
+					{
+							if (Info->ID == ID)
+							{
+								Info->state = INFO_STT_None;
+								LISTVIEW_SetItemText(hListview,6,SelRow,"");
+								sprintf(pStrBuf,"%s",pStrBuf);
+								BUTTON_SetText(WM_GetDialogItem(InfoText,ID_BUTTON_0),pStrBuf);
+								MULTIEDIT_SetText(WM_GetDialogItem(InfoText, ID_MULTIEDIT_0),Info->pContent);
+								break;
+							}
+					}while (Info = Info->pNext);
  					WM_BringToTop (InfoText);
  					WM_SetFocus (InfoText);
- 					//WM_HideWindow();
- 					//WM_InvalidateArea(&InfoRect);
+					
 					break;
-			
+
 		}
 		
 		case WM_POST_PAINT:
 			RowNum = LISTVIEW_GetNumRows(hListview);
-//INFO("RowNum = %d",RowNum);
 				GUI_SetColor(GUI_BLACK);
 				for (RowLineIndex = 0; RowLineIndex<RowNum; RowLineIndex++)
 					{	GUI_DrawLine(0,(69+40*(RowLineIndex)),720,(69+40*(RowLineIndex)));
-//INFO ("RowLineIndex = %d",RowLineIndex);					
 }
 		
 		default :
@@ -236,18 +454,19 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 			GUI_SetBkColor(GUI_WHITE);
 			GUI_Clear();
 			GUI_SetColor(GUI_BLACK);
-			//GUI_DispStringAt("所有信息",40,10);
 			GUI_AA_DrawLine(190,0,220,40);
 			GUI_AA_DrawLine(220,40,800,40);
-			GUI_DispStringAt("所处02页/共014页",580,410);
+			GUI_DispStringAt("所处      页/共      页",560,415);		
+ 		GUI_DispDecAt(thispage,605,415,3);
+			GUI_DispDecAt(pageNum,700,415,3);
 			GUI_SetFont(&GUI_Font25);
 			GUI_DispStringAt("高电压警告",230,8);
+			GUI_SetColor(GUI_RED);
 			
 			break;
 		
 		case WM_INIT_DIALOG:
 			
-			//hButton = BUTTON_CreateEx(40,10,100,30,mainwin,WM_CF_SHOW,0,GUI_ID_BUTTON0);
 			hButton = WM_GetDialogItem (hWin,ID_BUTTON_0);
 			BUTTON_SetBkColor (hButton,BUTTON_CI_UNPRESSED,GUI_WHITE);
 			BUTTON_SetTextColor (hButton,BUTTON_CI_UNPRESSED,GUI_BLACK);
@@ -277,10 +496,17 @@ static void _cbDialog(WM_MESSAGE * pMsg) {
 			LISTVIEW_AddColumn(hListview,120,"频道",GUI_TA_HCENTER|GUI_TA_VCENTER);
 			LISTVIEW_AddColumn(hListview,100,"信息类型",GUI_TA_HCENTER|GUI_TA_VCENTER);
 			LISTVIEW_AddColumn(hListview,100,"信息状态",GUI_TA_HCENTER|GUI_TA_VCENTER);
-			for (i = 0; i < 8; i++)
-			{
-					LISTVIEW_AddRow(hListview,Alldata[i]);
-			}
+			LISTVIEW_SetTextAlign(hListview,6,GUI_TA_LEFT);
+				for (i=0;	i<16; i++)
+				{
+					INFO_add(&TESTDATA[i]);
+				}
+				if (rowNum < 8)
+					pageNum = 1;
+				else if (rowNum%8 == 0)
+					pageNum = rowNum/8;
+				else pageNum = rowNum/8+1;	
+				InfoSel(0,1);
 			WM_SetCallback (hListview,&mylistview);
 			break;
 		
