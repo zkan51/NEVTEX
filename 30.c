@@ -20,11 +20,11 @@
 *                                                                    *
 * Initial font height: 30                                            *
 * Range disabled: 0000 - FFFF                                        *
-* Read pattern file: G:\Users\Administrator\Desktop\temporary\NAVTEX\NAVTEX1.2\30.txt*
+* Read pattern file: G:\Users\Administrator\Desktop\NAVTEX1.4\30.txt *
 *                                                                    *
 **********************************************************************
 */
-
+// 自定义字体：锁9501，横6a2a
 #include "GUI.h"
 
 #ifndef GUI_CONST_STORAGE
@@ -1246,6 +1246,28 @@ GUI_CONST_STORAGE unsigned char acGUI_Font30_007A[ 24] = { /* code 007A, LATIN S
   XXXXXXXX,XX______,
   XXXXXXXX,XX______};
 
+/* Start of unicode area <Arrows> */
+GUI_CONST_STORAGE unsigned char acGUI_Font30_2193[ 19] = { /* code 2193, DOWNWARDS ARROW */
+  ___XX___,
+  ___XX___,
+  ___XX___,
+  ___XX___,
+  ___XX___,
+  ___XX___,
+  ___XX___,
+  ___XX___,
+  ___XX___,
+  ___XX___,
+  ___XX___,
+  ___XX___,
+  ___XX___,
+  ___XX___,
+  X__XX__X,
+  _X_XX_X_,
+  __XXXX__,
+  ___XX___,
+  ___XX___};
+
 /* Start of unicode area <Geometric Shapes> */
 GUI_CONST_STORAGE unsigned char acGUI_Font30_25B2[ 30] = { /* code 25B2, BLACK UP-POINTING TRIANGLE */
   ________,________,
@@ -1760,6 +1782,29 @@ GUI_CONST_STORAGE unsigned char acGUI_Font30_524D[ 60] = { /* code 524D */
   _XX_____,_XX_____,_XX_____,
   _XX___XX,XXX___XX,XXX_____,
   _XX___XX,XX____XX,XX______};
+
+GUI_CONST_STORAGE unsigned char acGUI_Font30_52A8[ 63] = { /* code 52A8 */
+  ________,_____XX_,________,
+  _XXXXXXX,XX___XX_,________,
+  _XXXXXXX,XX___XX_,________,
+  ________,_____XX_,________,
+  ________,__XXXXXX,XXXXX___,
+  ________,__XXXXXX,XXXXX___,
+  ________,_____XX_,__XXX___,
+  XXXXXXXX,XXX__XX_,__XXX___,
+  XXXXXXXX,XXX__XX_,__XXX___,
+  ___XX___,_____XX_,__XXX___,
+  ___XX___,_____XX_,__XXX___,
+  __XX__XX,_____XX_,__XX____,
+  __XX__XX,X___XXX_,__XX____,
+  __X____X,X___XX__,__XX____,
+  _XX____X,X___XX__,__XX____,
+  _X___XXX,X__XX___,__XX____,
+  XXXXXXXX,XX_XX___,__XX____,
+  _XXX____,X_XX____,__XX____,
+  ________,_XXX__XX,XXXX____,
+  ________,XXX___XX,XXX_____,
+  ________,_X______,________};
 
 GUI_CONST_STORAGE unsigned char acGUI_Font30_5355[ 63] = { /* code 5355 */
   ____X___,_______X,________,
@@ -3393,6 +3438,25 @@ GUI_CONST_STORAGE unsigned char acGUI_Font30_6A21[ 63] = { /* code 6A21 */
   ___XX_XX,XXX_____,__XXXX__,
   ___XX__X,X_______,____X___};
 
+GUI_CONST_STORAGE unsigned char acGUI_Font30_6A2A[ 63] = { /* code 6A2A */
+________,________,________,
+________,________,________,
+________,________,________,
+________,________,________,
+________,________,________,
+________,________,________,
+XXXXXXXX,XXXXXXXX,XXXXXXXX,
+XXXXXXXX,XXXXXXXX,XXXXXXXX,
+XXXXXXXX,XXXXXXXX,XXXXXXXX,
+XXXXXXXX,XXXXXXXX,XXXXXXXX,
+________,________,________,
+________,________,________,
+________,________,________,
+________,________,________,
+________,________,________,
+________,________,________,
+________,________,________};
+
 GUI_CONST_STORAGE unsigned char acGUI_Font30_6B63[ 57] = { /* code 6B63 */
   _XXXXXXX,XXXXXXXX,XXXX____,
   _XXXXXXX,XXXXXXXX,XXXX____,
@@ -4690,7 +4754,7 @@ GUI_CONST_STORAGE unsigned char acGUI_Font30_94C3[ 63] = { /* code 94C3 */
   __XXX___,_______X,XX______,
   ___X____,________,X_______};
 
-GUI_CONST_STORAGE unsigned char acGUI_Font30_9501[ 54] = { /* code 9501 */
+GUI_CONST_STORAGE unsigned char acGUI_Font30_9501[ 63] = { /* code 9501 */
 _______X,XX______,
 _______X,XX______,
 _______X,XX______,
@@ -4995,7 +5059,7 @@ GUI_CONST_STORAGE unsigned char acGUI_Font30_FF1F[ 17] = { /* code FF1F, FULLWID
   __XXX___,
   __XXX___};
 
-GUI_CONST_STORAGE GUI_CHARINFO_EXT GUI_Font30_CharInfo[236] = {
+GUI_CONST_STORAGE GUI_CHARINFO_EXT GUI_Font30_CharInfo[239] = {
    {   1,   1,   0,  24,   7, acGUI_Font30_0020 } /* code 0020, SPACE */
   ,{  18,  17,   1,   7,  20, acGUI_Font30_0025 } /* code 0025, PERCENT SIGN */
   ,{  12,  12,   2,  11,  16, acGUI_Font30_002B } /* code 002B, PLUS SIGN */
@@ -5065,6 +5129,7 @@ GUI_CONST_STORAGE GUI_CHARINFO_EXT GUI_Font30_CharInfo[236] = {
   ,{  11,  12,   0,  12,  11, acGUI_Font30_0078 } /* code 0078, LATIN SMALL LETTER X */
   ,{  12,  17,   0,  12,  12, acGUI_Font30_0079 } /* code 0079, LATIN SMALL LETTER Y */
   ,{  10,  12,   0,  12,  11, acGUI_Font30_007A } /* code 007A, LATIN SMALL LETTER Z */
+  ,{   8,  19,   1,   6,  11, acGUI_Font30_2193 } /* code 2193, DOWNWARDS ARROW */
   ,{  16,  15,   3,   9,  22, acGUI_Font30_25B2 } /* code 25B2, BLACK UP-POINTING TRIANGLE */
   ,{  16,  15,   3,   9,  22, acGUI_Font30_25BC } /* code 25BC, BLACK DOWN-POINTING TRIANGLE */
   ,{  22,   2,   0,  15,  22, acGUI_Font30_4E00 } /* code 4E00, <CJK Ideograph, First> */
@@ -5089,6 +5154,7 @@ GUI_CONST_STORAGE GUI_CHARINFO_EXT GUI_Font30_CharInfo[236] = {
   ,{  22,  21,   0,   6,  22, acGUI_Font30_5206 } /* code 5206 */
   ,{  20,  21,   1,   6,  22, acGUI_Font30_5230 } /* code 5230 */
   ,{  21,  20,   1,   6,  22, acGUI_Font30_524D } /* code 524D */
+  ,{  21,  21,   1,   6,  22, acGUI_Font30_52A8 } /* code 52A8 */
   ,{  21,  21,   1,   6,  22, acGUI_Font30_5355 } /* code 5355 */
   ,{  20,  21,   1,   6,  22, acGUI_Font30_5370 } /* code 5370 */
   ,{  20,  20,   1,   7,  22, acGUI_Font30_5373 } /* code 5373 */
@@ -5161,6 +5227,7 @@ GUI_CONST_STORAGE GUI_CHARINFO_EXT GUI_Font30_CharInfo[236] = {
   ,{  21,  20,   1,   6,  22, acGUI_Font30_67E5 } /* code 67E5 */
   ,{  21,  21,   1,   6,  22, acGUI_Font30_68C0 } /* code 68C0 */
   ,{  22,  21,   0,   6,  22, acGUI_Font30_6A21 } /* code 6A21 */
+  ,{  22,  21,   0,   6,  22, acGUI_Font30_6A2A } /* code 6A2A */
   ,{  21,  19,   1,   7,  22, acGUI_Font30_6B63 } /* code 6B63 */
   ,{  21,  21,   0,   6,  22, acGUI_Font30_6B65 } /* code 6B65 */
   ,{  21,  21,   0,   6,  22, acGUI_Font30_6D4B } /* code 6D4B */
@@ -5218,7 +5285,7 @@ GUI_CONST_STORAGE GUI_CHARINFO_EXT GUI_Font30_CharInfo[236] = {
   ,{  22,  20,   0,   6,  22, acGUI_Font30_91CD } /* code 91CD */
   ,{  21,  21,   0,   6,  22, acGUI_Font30_949F } /* code 949F */
   ,{  22,  21,   0,   6,  22, acGUI_Font30_94C3 } /* code 94C3 */
-  ,{  16,  27,   0,   6,  22, acGUI_Font30_9501 } /* code 9501 */
+  ,{  16,  27,   0,   2,  22, acGUI_Font30_9501 } /* code 9501 */
   ,{  23,  22,   0,   6,  22, acGUI_Font30_952E } /* code 952E */
   ,{  20,  21,   1,   6,  22, acGUI_Font30_95ED } /* code 95ED */
   ,{  20,  21,   1,   6,  22, acGUI_Font30_95F4 } /* code 95F4 */
@@ -5234,1136 +5301,1157 @@ GUI_CONST_STORAGE GUI_CHARINFO_EXT GUI_Font30_CharInfo[236] = {
   ,{   8,  17,   7,   7,  22, acGUI_Font30_FF1F } /* code FF1F, FULLWIDTH QUESTION MARK */
 };
 
-GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop168 = {
+GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop171 = {
    0xFF1F /* first character */
   ,0xFF1F /* last character  */
-  ,&GUI_Font30_CharInfo[235] /* address of first character */
+  ,&GUI_Font30_CharInfo[238] /* address of first character */
   ,(GUI_CONST_STORAGE GUI_FONT_PROP_EXT *)0 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
-GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop167 = {
+GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop170 = {
    0xFF0C /* first character */
   ,0xFF0C /* last character  */
+  ,&GUI_Font30_CharInfo[237] /* address of first character */
+  ,&GUI_Font30_Prop171 /* pointer to next GUI_FONT_PROP_EXT */
+};
+
+GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop169 = {
+   0xFF01 /* first character */
+  ,0xFF01 /* last character  */
+  ,&GUI_Font30_CharInfo[236] /* address of first character */
+  ,&GUI_Font30_Prop170 /* pointer to next GUI_FONT_PROP_EXT */
+};
+
+GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop168 = {
+   0x9AD8 /* first character */
+  ,0x9AD8 /* last character  */
+  ,&GUI_Font30_CharInfo[235] /* address of first character */
+  ,&GUI_Font30_Prop169 /* pointer to next GUI_FONT_PROP_EXT */
+};
+
+GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop167 = {
+   0x9891 /* first character */
+  ,0x9891 /* last character  */
   ,&GUI_Font30_CharInfo[234] /* address of first character */
   ,&GUI_Font30_Prop168 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop166 = {
-   0xFF01 /* first character */
-  ,0xFF01 /* last character  */
+   0x9879 /* first character */
+  ,0x9879 /* last character  */
   ,&GUI_Font30_CharInfo[233] /* address of first character */
   ,&GUI_Font30_Prop167 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop165 = {
-   0x9AD8 /* first character */
-  ,0x9AD8 /* last character  */
+   0x9875 /* first character */
+  ,0x9875 /* last character  */
   ,&GUI_Font30_CharInfo[232] /* address of first character */
   ,&GUI_Font30_Prop166 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop164 = {
-   0x9891 /* first character */
-  ,0x9891 /* last character  */
+   0x97F3 /* first character */
+  ,0x97F3 /* last character  */
   ,&GUI_Font30_CharInfo[231] /* address of first character */
   ,&GUI_Font30_Prop165 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop163 = {
-   0x9879 /* first character */
-  ,0x9879 /* last character  */
+   0x9700 /* first character */
+  ,0x9700 /* last character  */
   ,&GUI_Font30_CharInfo[230] /* address of first character */
   ,&GUI_Font30_Prop164 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop162 = {
-   0x9875 /* first character */
-  ,0x9875 /* last character  */
+   0x9645 /* first character */
+  ,0x9645 /* last character  */
   ,&GUI_Font30_CharInfo[229] /* address of first character */
   ,&GUI_Font30_Prop163 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop161 = {
-   0x97F3 /* first character */
-  ,0x97F3 /* last character  */
+   0x95F4 /* first character */
+  ,0x95F4 /* last character  */
   ,&GUI_Font30_CharInfo[228] /* address of first character */
   ,&GUI_Font30_Prop162 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop160 = {
-   0x9700 /* first character */
-  ,0x9700 /* last character  */
+   0x95ED /* first character */
+  ,0x95ED /* last character  */
   ,&GUI_Font30_CharInfo[227] /* address of first character */
   ,&GUI_Font30_Prop161 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop159 = {
-   0x9645 /* first character */
-  ,0x9645 /* last character  */
+   0x952E /* first character */
+  ,0x952E /* last character  */
   ,&GUI_Font30_CharInfo[226] /* address of first character */
   ,&GUI_Font30_Prop160 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop158 = {
-   0x95F4 /* first character */
-  ,0x95F4 /* last character  */
+   0x9501 /* first character */
+  ,0x9501 /* last character  */
   ,&GUI_Font30_CharInfo[225] /* address of first character */
   ,&GUI_Font30_Prop159 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop157 = {
-   0x95ED /* first character */
-  ,0x95ED /* last character  */
+   0x94C3 /* first character */
+  ,0x94C3 /* last character  */
   ,&GUI_Font30_CharInfo[224] /* address of first character */
   ,&GUI_Font30_Prop158 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop156 = {
-   0x952E /* first character */
-  ,0x952E /* last character  */
+   0x949F /* first character */
+  ,0x949F /* last character  */
   ,&GUI_Font30_CharInfo[223] /* address of first character */
   ,&GUI_Font30_Prop157 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop155 = {
-   0x9501 /* first character */
-  ,0x9501 /* last character  */
-  ,&GUI_Font30_CharInfo[222] /* address of first character */
+   0x91CC /* first character */
+  ,0x91CD /* last character  */
+  ,&GUI_Font30_CharInfo[221] /* address of first character */
   ,&GUI_Font30_Prop156 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop154 = {
-   0x94C3 /* first character */
-  ,0x94C3 /* last character  */
-  ,&GUI_Font30_CharInfo[221] /* address of first character */
+   0x9053 /* first character */
+  ,0x9053 /* last character  */
+  ,&GUI_Font30_CharInfo[220] /* address of first character */
   ,&GUI_Font30_Prop155 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop153 = {
-   0x949F /* first character */
-  ,0x949F /* last character  */
-  ,&GUI_Font30_CharInfo[220] /* address of first character */
+   0x901A /* first character */
+  ,0x901A /* last character  */
+  ,&GUI_Font30_CharInfo[219] /* address of first character */
   ,&GUI_Font30_Prop154 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop152 = {
-   0x91CC /* first character */
-  ,0x91CD /* last character  */
+   0x9009 /* first character */
+  ,0x9009 /* last character  */
   ,&GUI_Font30_CharInfo[218] /* address of first character */
   ,&GUI_Font30_Prop153 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop151 = {
-   0x9053 /* first character */
-  ,0x9053 /* last character  */
+   0x9000 /* first character */
+  ,0x9000 /* last character  */
   ,&GUI_Font30_CharInfo[217] /* address of first character */
   ,&GUI_Font30_Prop152 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop150 = {
-   0x901A /* first character */
-  ,0x901A /* last character  */
+   0x8FDE /* first character */
+  ,0x8FDE /* last character  */
   ,&GUI_Font30_CharInfo[216] /* address of first character */
   ,&GUI_Font30_Prop151 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop149 = {
-   0x9009 /* first character */
-  ,0x9009 /* last character  */
+   0x8FDB /* first character */
+  ,0x8FDB /* last character  */
   ,&GUI_Font30_CharInfo[215] /* address of first character */
   ,&GUI_Font30_Prop150 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop148 = {
-   0x9000 /* first character */
-  ,0x9000 /* last character  */
+   0x8FD4 /* first character */
+  ,0x8FD4 /* last character  */
   ,&GUI_Font30_CharInfo[214] /* address of first character */
   ,&GUI_Font30_Prop149 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop147 = {
-   0x8FDE /* first character */
-  ,0x8FDE /* last character  */
+   0x8FC7 /* first character */
+  ,0x8FC7 /* last character  */
   ,&GUI_Font30_CharInfo[213] /* address of first character */
   ,&GUI_Font30_Prop148 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop146 = {
-   0x8FDB /* first character */
-  ,0x8FDB /* last character  */
+   0x8F93 /* first character */
+  ,0x8F93 /* last character  */
   ,&GUI_Font30_CharInfo[212] /* address of first character */
   ,&GUI_Font30_Prop147 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop145 = {
-   0x8FD4 /* first character */
-  ,0x8FD4 /* last character  */
+   0x8F6F /* first character */
+  ,0x8F6F /* last character  */
   ,&GUI_Font30_CharInfo[211] /* address of first character */
   ,&GUI_Font30_Prop146 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop144 = {
-   0x8FC7 /* first character */
-  ,0x8FC7 /* last character  */
+   0x8DDD /* first character */
+  ,0x8DDD /* last character  */
   ,&GUI_Font30_CharInfo[210] /* address of first character */
   ,&GUI_Font30_Prop145 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop143 = {
-   0x8F93 /* first character */
-  ,0x8F93 /* last character  */
+   0x8D25 /* first character */
+  ,0x8D25 /* last character  */
   ,&GUI_Font30_CharInfo[209] /* address of first character */
   ,&GUI_Font30_Prop144 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop142 = {
-   0x8F6F /* first character */
-  ,0x8F6F /* last character  */
+   0x8BF7 /* first character */
+  ,0x8BF7 /* last character  */
   ,&GUI_Font30_CharInfo[208] /* address of first character */
   ,&GUI_Font30_Prop143 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop141 = {
-   0x8DDD /* first character */
-  ,0x8DDD /* last character  */
+   0x8BEF /* first character */
+  ,0x8BEF /* last character  */
   ,&GUI_Font30_CharInfo[207] /* address of first character */
   ,&GUI_Font30_Prop142 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop140 = {
-   0x8D25 /* first character */
-  ,0x8D25 /* last character  */
+   0x8BED /* first character */
+  ,0x8BED /* last character  */
   ,&GUI_Font30_CharInfo[206] /* address of first character */
   ,&GUI_Font30_Prop141 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop139 = {
-   0x8BF7 /* first character */
-  ,0x8BF7 /* last character  */
+   0x8BBE /* first character */
+  ,0x8BBE /* last character  */
   ,&GUI_Font30_CharInfo[205] /* address of first character */
   ,&GUI_Font30_Prop140 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop138 = {
-   0x8BEF /* first character */
-  ,0x8BEF /* last character  */
+   0x8B66 /* first character */
+  ,0x8B66 /* last character  */
   ,&GUI_Font30_CharInfo[204] /* address of first character */
   ,&GUI_Font30_Prop139 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop137 = {
-   0x8BED /* first character */
-  ,0x8BED /* last character  */
+   0x8A00 /* first character */
+  ,0x8A00 /* last character  */
   ,&GUI_Font30_CharInfo[203] /* address of first character */
   ,&GUI_Font30_Prop138 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop136 = {
-   0x8BBE /* first character */
-  ,0x8BBE /* last character  */
+   0x8981 /* first character */
+  ,0x8981 /* last character  */
   ,&GUI_Font30_CharInfo[202] /* address of first character */
   ,&GUI_Font30_Prop137 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop135 = {
-   0x8B66 /* first character */
-  ,0x8B66 /* last character  */
+   0x884C /* first character */
+  ,0x884C /* last character  */
   ,&GUI_Font30_CharInfo[201] /* address of first character */
   ,&GUI_Font30_Prop136 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop134 = {
-   0x8A00 /* first character */
-  ,0x8A00 /* last character  */
+   0x83DC /* first character */
+  ,0x83DC /* last character  */
   ,&GUI_Font30_CharInfo[200] /* address of first character */
   ,&GUI_Font30_Prop135 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop133 = {
-   0x8981 /* first character */
-  ,0x8981 /* last character  */
+   0x8272 /* first character */
+  ,0x8272 /* last character  */
   ,&GUI_Font30_CharInfo[199] /* address of first character */
   ,&GUI_Font30_Prop134 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop132 = {
-   0x884C /* first character */
-  ,0x884C /* last character  */
+   0x81EA /* first character */
+  ,0x81EA /* last character  */
   ,&GUI_Font30_CharInfo[198] /* address of first character */
   ,&GUI_Font30_Prop133 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop131 = {
-   0x83DC /* first character */
-  ,0x83DC /* last character  */
+   0x7F6E /* first character */
+  ,0x7F6E /* last character  */
   ,&GUI_Font30_CharInfo[197] /* address of first character */
   ,&GUI_Font30_Prop132 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop130 = {
-   0x8272 /* first character */
-  ,0x8272 /* last character  */
+   0x7F16 /* first character */
+  ,0x7F16 /* last character  */
   ,&GUI_Font30_CharInfo[196] /* address of first character */
   ,&GUI_Font30_Prop131 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop129 = {
-   0x81EA /* first character */
-  ,0x81EA /* last character  */
+   0x7EDF /* first character */
+  ,0x7EDF /* last character  */
   ,&GUI_Font30_CharInfo[195] /* address of first character */
   ,&GUI_Font30_Prop130 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop128 = {
-   0x7F6E /* first character */
-  ,0x7F6E /* last character  */
+   0x7EBF /* first character */
+  ,0x7EBF /* last character  */
   ,&GUI_Font30_CharInfo[194] /* address of first character */
   ,&GUI_Font30_Prop129 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop127 = {
-   0x7F16 /* first character */
-  ,0x7F16 /* last character  */
+   0x7EA7 /* first character */
+  ,0x7EA7 /* last character  */
   ,&GUI_Font30_CharInfo[193] /* address of first character */
   ,&GUI_Font30_Prop128 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop126 = {
-   0x7EDF /* first character */
-  ,0x7EDF /* last character  */
+   0x7CFB /* first character */
+  ,0x7CFB /* last character  */
   ,&GUI_Font30_CharInfo[192] /* address of first character */
   ,&GUI_Font30_Prop127 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop125 = {
-   0x7EBF /* first character */
-  ,0x7EBF /* last character  */
+   0x7C7B /* first character */
+  ,0x7C7B /* last character  */
   ,&GUI_Font30_CharInfo[191] /* address of first character */
   ,&GUI_Font30_Prop126 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop124 = {
-   0x7EA7 /* first character */
-  ,0x7EA7 /* last character  */
+   0x7B80 /* first character */
+  ,0x7B80 /* last character  */
   ,&GUI_Font30_CharInfo[190] /* address of first character */
   ,&GUI_Font30_Prop125 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop123 = {
-   0x7CFB /* first character */
-  ,0x7CFB /* last character  */
+   0x7B26 /* first character */
+  ,0x7B26 /* last character  */
   ,&GUI_Font30_CharInfo[189] /* address of first character */
   ,&GUI_Font30_Prop124 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop122 = {
-   0x7C7B /* first character */
-  ,0x7C7B /* last character  */
+   0x7AEF /* first character */
+  ,0x7AEF /* last character  */
   ,&GUI_Font30_CharInfo[188] /* address of first character */
   ,&GUI_Font30_Prop123 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop121 = {
-   0x7B80 /* first character */
-  ,0x7B80 /* last character  */
+   0x7AD9 /* first character */
+  ,0x7AD9 /* last character  */
   ,&GUI_Font30_CharInfo[187] /* address of first character */
   ,&GUI_Font30_Prop122 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop120 = {
-   0x7B26 /* first character */
-  ,0x7B26 /* last character  */
+   0x7ACB /* first character */
+  ,0x7ACB /* last character  */
   ,&GUI_Font30_CharInfo[186] /* address of first character */
   ,&GUI_Font30_Prop121 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop119 = {
-   0x7AEF /* first character */
-  ,0x7AEF /* last character  */
+   0x79BB /* first character */
+  ,0x79BB /* last character  */
   ,&GUI_Font30_CharInfo[185] /* address of first character */
   ,&GUI_Font30_Prop120 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop118 = {
-   0x7AD9 /* first character */
-  ,0x7AD9 /* last character  */
+   0x793A /* first character */
+  ,0x793A /* last character  */
   ,&GUI_Font30_CharInfo[184] /* address of first character */
   ,&GUI_Font30_Prop119 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop117 = {
-   0x7ACB /* first character */
-  ,0x7ACB /* last character  */
+   0x7801 /* first character */
+  ,0x7801 /* last character  */
   ,&GUI_Font30_CharInfo[183] /* address of first character */
   ,&GUI_Font30_Prop118 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop116 = {
-   0x79BB /* first character */
-  ,0x79BB /* last character  */
+   0x7761 /* first character */
+  ,0x7761 /* last character  */
   ,&GUI_Font30_CharInfo[182] /* address of first character */
   ,&GUI_Font30_Prop117 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop115 = {
-   0x793A /* first character */
-  ,0x793A /* last character  */
+   0x7720 /* first character */
+  ,0x7720 /* last character  */
   ,&GUI_Font30_CharInfo[181] /* address of first character */
   ,&GUI_Font30_Prop116 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop114 = {
-   0x7801 /* first character */
-  ,0x7801 /* last character  */
+   0x770B /* first character */
+  ,0x770B /* last character  */
   ,&GUI_Font30_CharInfo[180] /* address of first character */
   ,&GUI_Font30_Prop115 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop113 = {
-   0x7761 /* first character */
-  ,0x7761 /* last character  */
+   0x7684 /* first character */
+  ,0x7684 /* last character  */
   ,&GUI_Font30_CharInfo[179] /* address of first character */
   ,&GUI_Font30_Prop114 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop112 = {
-   0x7720 /* first character */
-  ,0x7720 /* last character  */
+   0x7535 /* first character */
+  ,0x7535 /* last character  */
   ,&GUI_Font30_CharInfo[178] /* address of first character */
   ,&GUI_Font30_Prop113 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop111 = {
-   0x770B /* first character */
-  ,0x770B /* last character  */
+   0x7387 /* first character */
+  ,0x7387 /* last character  */
   ,&GUI_Font30_CharInfo[177] /* address of first character */
   ,&GUI_Font30_Prop112 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop110 = {
-   0x7684 /* first character */
-  ,0x7684 /* last character  */
+   0x72B6 /* first character */
+  ,0x72B6 /* last character  */
   ,&GUI_Font30_CharInfo[176] /* address of first character */
   ,&GUI_Font30_Prop111 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop109 = {
-   0x7535 /* first character */
-  ,0x7535 /* last character  */
+   0x7248 /* first character */
+  ,0x7248 /* last character  */
   ,&GUI_Font30_CharInfo[175] /* address of first character */
   ,&GUI_Font30_Prop110 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop108 = {
-   0x7387 /* first character */
-  ,0x7387 /* last character  */
+   0x70B9 /* first character */
+  ,0x70B9 /* last character  */
   ,&GUI_Font30_CharInfo[174] /* address of first character */
   ,&GUI_Font30_Prop109 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop107 = {
-   0x72B6 /* first character */
-  ,0x72B6 /* last character  */
+   0x6E90 /* first character */
+  ,0x6E90 /* last character  */
   ,&GUI_Font30_CharInfo[173] /* address of first character */
   ,&GUI_Font30_Prop108 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop106 = {
-   0x7248 /* first character */
-  ,0x7248 /* last character  */
+   0x6D88 /* first character */
+  ,0x6D88 /* last character  */
   ,&GUI_Font30_CharInfo[172] /* address of first character */
   ,&GUI_Font30_Prop107 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop105 = {
-   0x70B9 /* first character */
-  ,0x70B9 /* last character  */
+   0x6D77 /* first character */
+  ,0x6D77 /* last character  */
   ,&GUI_Font30_CharInfo[171] /* address of first character */
   ,&GUI_Font30_Prop106 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop104 = {
-   0x6E90 /* first character */
-  ,0x6E90 /* last character  */
+   0x6D4B /* first character */
+  ,0x6D4B /* last character  */
   ,&GUI_Font30_CharInfo[170] /* address of first character */
   ,&GUI_Font30_Prop105 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop103 = {
-   0x6D88 /* first character */
-  ,0x6D88 /* last character  */
+   0x6B65 /* first character */
+  ,0x6B65 /* last character  */
   ,&GUI_Font30_CharInfo[169] /* address of first character */
   ,&GUI_Font30_Prop104 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop102 = {
-   0x6D77 /* first character */
-  ,0x6D77 /* last character  */
+   0x6B63 /* first character */
+  ,0x6B63 /* last character  */
   ,&GUI_Font30_CharInfo[168] /* address of first character */
   ,&GUI_Font30_Prop103 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop101 = {
-   0x6D4B /* first character */
-  ,0x6D4B /* last character  */
+   0x6A2A /* first character */
+  ,0x6A2A /* last character  */
   ,&GUI_Font30_CharInfo[167] /* address of first character */
   ,&GUI_Font30_Prop102 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop100 = {
-   0x6B65 /* first character */
-  ,0x6B65 /* last character  */
+   0x6A21 /* first character */
+  ,0x6A21 /* last character  */
   ,&GUI_Font30_CharInfo[166] /* address of first character */
   ,&GUI_Font30_Prop101 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop99 = {
-   0x6B63 /* first character */
-  ,0x6B63 /* last character  */
+   0x68C0 /* first character */
+  ,0x68C0 /* last character  */
   ,&GUI_Font30_CharInfo[165] /* address of first character */
   ,&GUI_Font30_Prop100 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop98 = {
-   0x6A21 /* first character */
-  ,0x6A21 /* last character  */
+   0x67E5 /* first character */
+  ,0x67E5 /* last character  */
   ,&GUI_Font30_CharInfo[164] /* address of first character */
   ,&GUI_Font30_Prop99 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop97 = {
-   0x68C0 /* first character */
-  ,0x68C0 /* last character  */
+   0x673A /* first character */
+  ,0x673A /* last character  */
   ,&GUI_Font30_CharInfo[163] /* address of first character */
   ,&GUI_Font30_Prop98 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop96 = {
-   0x67E5 /* first character */
-  ,0x67E5 /* last character  */
+   0x672C /* first character */
+  ,0x672C /* last character  */
   ,&GUI_Font30_CharInfo[162] /* address of first character */
   ,&GUI_Font30_Prop97 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop95 = {
-   0x673A /* first character */
-  ,0x673A /* last character  */
+   0x672A /* first character */
+  ,0x672A /* last character  */
   ,&GUI_Font30_CharInfo[161] /* address of first character */
   ,&GUI_Font30_Prop96 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop94 = {
-   0x672C /* first character */
-  ,0x672C /* last character  */
-  ,&GUI_Font30_CharInfo[160] /* address of first character */
+   0x6708 /* first character */
+  ,0x6709 /* last character  */
+  ,&GUI_Font30_CharInfo[159] /* address of first character */
   ,&GUI_Font30_Prop95 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop93 = {
-   0x672A /* first character */
-  ,0x672A /* last character  */
-  ,&GUI_Font30_CharInfo[159] /* address of first character */
+   0x6700 /* first character */
+  ,0x6700 /* last character  */
+  ,&GUI_Font30_CharInfo[158] /* address of first character */
   ,&GUI_Font30_Prop94 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop92 = {
-   0x6708 /* first character */
-  ,0x6709 /* last character  */
+   0x66F4 /* first character */
+  ,0x66F4 /* last character  */
   ,&GUI_Font30_CharInfo[157] /* address of first character */
   ,&GUI_Font30_Prop93 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop91 = {
-   0x6700 /* first character */
-  ,0x6700 /* last character  */
+   0x663E /* first character */
+  ,0x663E /* last character  */
   ,&GUI_Font30_CharInfo[156] /* address of first character */
   ,&GUI_Font30_Prop92 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop90 = {
-   0x66F4 /* first character */
-  ,0x66F4 /* last character  */
+   0x662F /* first character */
+  ,0x662F /* last character  */
   ,&GUI_Font30_CharInfo[155] /* address of first character */
   ,&GUI_Font30_Prop91 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop89 = {
-   0x663E /* first character */
-  ,0x663E /* last character  */
+   0x65F6 /* first character */
+  ,0x65F6 /* last character  */
   ,&GUI_Font30_CharInfo[154] /* address of first character */
   ,&GUI_Font30_Prop90 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop88 = {
-   0x662F /* first character */
-  ,0x662F /* last character  */
+   0x65E5 /* first character */
+  ,0x65E5 /* last character  */
   ,&GUI_Font30_CharInfo[153] /* address of first character */
   ,&GUI_Font30_Prop89 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop87 = {
-   0x65F6 /* first character */
-  ,0x65F6 /* last character  */
+   0x65E0 /* first character */
+  ,0x65E0 /* last character  */
   ,&GUI_Font30_CharInfo[152] /* address of first character */
   ,&GUI_Font30_Prop88 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop86 = {
-   0x65E5 /* first character */
-  ,0x65E5 /* last character  */
+   0x65B0 /* first character */
+  ,0x65B0 /* last character  */
   ,&GUI_Font30_CharInfo[151] /* address of first character */
   ,&GUI_Font30_Prop87 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop85 = {
-   0x65E0 /* first character */
-  ,0x65E0 /* last character  */
+   0x6587 /* first character */
+  ,0x6587 /* last character  */
   ,&GUI_Font30_CharInfo[150] /* address of first character */
   ,&GUI_Font30_Prop86 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop84 = {
-   0x65B0 /* first character */
-  ,0x65B0 /* last character  */
+   0x6570 /* first character */
+  ,0x6570 /* last character  */
   ,&GUI_Font30_CharInfo[149] /* address of first character */
   ,&GUI_Font30_Prop85 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop83 = {
-   0x6587 /* first character */
-  ,0x6587 /* last character  */
+   0x6551 /* first character */
+  ,0x6551 /* last character  */
   ,&GUI_Font30_CharInfo[148] /* address of first character */
   ,&GUI_Font30_Prop84 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop82 = {
-   0x6570 /* first character */
-  ,0x6570 /* last character  */
+   0x6536 /* first character */
+  ,0x6536 /* last character  */
   ,&GUI_Font30_CharInfo[147] /* address of first character */
   ,&GUI_Font30_Prop83 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop81 = {
-   0x6551 /* first character */
-  ,0x6551 /* last character  */
+   0x64CD /* first character */
+  ,0x64CD /* last character  */
   ,&GUI_Font30_CharInfo[146] /* address of first character */
   ,&GUI_Font30_Prop82 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop80 = {
-   0x6536 /* first character */
-  ,0x6536 /* last character  */
+   0x641C /* first character */
+  ,0x641C /* last character  */
   ,&GUI_Font30_CharInfo[145] /* address of first character */
   ,&GUI_Font30_Prop81 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop79 = {
-   0x64CD /* first character */
-  ,0x64CD /* last character  */
+   0x63A5 /* first character */
+  ,0x63A5 /* last character  */
   ,&GUI_Font30_CharInfo[144] /* address of first character */
   ,&GUI_Font30_Prop80 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop78 = {
-   0x641C /* first character */
-  ,0x641C /* last character  */
+   0x636E /* first character */
+  ,0x636E /* last character  */
   ,&GUI_Font30_CharInfo[143] /* address of first character */
   ,&GUI_Font30_Prop79 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop77 = {
-   0x63A5 /* first character */
-  ,0x63A5 /* last character  */
+   0x6309 /* first character */
+  ,0x6309 /* last character  */
   ,&GUI_Font30_CharInfo[142] /* address of first character */
   ,&GUI_Font30_Prop78 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop76 = {
-   0x636E /* first character */
-  ,0x636E /* last character  */
+   0x62E9 /* first character */
+  ,0x62E9 /* last character  */
   ,&GUI_Font30_CharInfo[141] /* address of first character */
   ,&GUI_Font30_Prop77 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop75 = {
-   0x6309 /* first character */
-  ,0x6309 /* last character  */
+   0x62A5 /* first character */
+  ,0x62A5 /* last character  */
   ,&GUI_Font30_CharInfo[140] /* address of first character */
   ,&GUI_Font30_Prop76 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop74 = {
-   0x62E9 /* first character */
-  ,0x62E9 /* last character  */
+   0x6267 /* first character */
+  ,0x6267 /* last character  */
   ,&GUI_Font30_CharInfo[139] /* address of first character */
   ,&GUI_Font30_Prop75 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop73 = {
-   0x62A5 /* first character */
-  ,0x62A5 /* last character  */
+   0x6253 /* first character */
+  ,0x6253 /* last character  */
   ,&GUI_Font30_CharInfo[138] /* address of first character */
   ,&GUI_Font30_Prop74 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop72 = {
-   0x6267 /* first character */
-  ,0x6267 /* last character  */
+   0x6240 /* first character */
+  ,0x6240 /* last character  */
   ,&GUI_Font30_CharInfo[137] /* address of first character */
   ,&GUI_Font30_Prop73 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop71 = {
-   0x6253 /* first character */
-  ,0x6253 /* last character  */
+   0x6210 /* first character */
+  ,0x6210 /* last character  */
   ,&GUI_Font30_CharInfo[136] /* address of first character */
   ,&GUI_Font30_Prop72 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop70 = {
-   0x6240 /* first character */
-  ,0x6240 /* last character  */
+   0x606F /* first character */
+  ,0x606F /* last character  */
   ,&GUI_Font30_CharInfo[135] /* address of first character */
   ,&GUI_Font30_Prop71 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop69 = {
-   0x6210 /* first character */
-  ,0x6210 /* last character  */
+   0x6062 /* first character */
+  ,0x6062 /* last character  */
   ,&GUI_Font30_CharInfo[134] /* address of first character */
   ,&GUI_Font30_Prop70 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop68 = {
-   0x606F /* first character */
-  ,0x606F /* last character  */
+   0x6001 /* first character */
+  ,0x6001 /* last character  */
   ,&GUI_Font30_CharInfo[133] /* address of first character */
   ,&GUI_Font30_Prop69 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop67 = {
-   0x6062 /* first character */
-  ,0x6062 /* last character  */
+   0x5F53 /* first character */
+  ,0x5F53 /* last character  */
   ,&GUI_Font30_CharInfo[132] /* address of first character */
   ,&GUI_Font30_Prop68 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop66 = {
-   0x6001 /* first character */
-  ,0x6001 /* last character  */
+   0x5F0F /* first character */
+  ,0x5F0F /* last character  */
   ,&GUI_Font30_CharInfo[131] /* address of first character */
   ,&GUI_Font30_Prop67 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop65 = {
-   0x5F53 /* first character */
-  ,0x5F53 /* last character  */
+   0x5F00 /* first character */
+  ,0x5F00 /* last character  */
   ,&GUI_Font30_CharInfo[130] /* address of first character */
   ,&GUI_Font30_Prop66 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop64 = {
-   0x5F0F /* first character */
-  ,0x5F0F /* last character  */
+   0x5E8F /* first character */
+  ,0x5E8F /* last character  */
   ,&GUI_Font30_CharInfo[129] /* address of first character */
   ,&GUI_Font30_Prop65 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop63 = {
-   0x5F00 /* first character */
-  ,0x5F00 /* last character  */
+   0x5E74 /* first character */
+  ,0x5E74 /* last character  */
   ,&GUI_Font30_CharInfo[128] /* address of first character */
   ,&GUI_Font30_Prop64 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop62 = {
-   0x5E8F /* first character */
-  ,0x5E8F /* last character  */
+   0x5DF2 /* first character */
+  ,0x5DF2 /* last character  */
   ,&GUI_Font30_CharInfo[127] /* address of first character */
   ,&GUI_Font30_Prop63 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop61 = {
-   0x5E74 /* first character */
-  ,0x5E74 /* last character  */
+   0x5C06 /* first character */
+  ,0x5C06 /* last character  */
   ,&GUI_Font30_CharInfo[126] /* address of first character */
   ,&GUI_Font30_Prop62 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop60 = {
-   0x5DF2 /* first character */
-  ,0x5DF2 /* last character  */
+   0x5C04 /* first character */
+  ,0x5C04 /* last character  */
   ,&GUI_Font30_CharInfo[125] /* address of first character */
   ,&GUI_Font30_Prop61 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop59 = {
-   0x5C06 /* first character */
-  ,0x5C06 /* last character  */
+   0x5B9A /* first character */
+  ,0x5B9A /* last character  */
   ,&GUI_Font30_CharInfo[124] /* address of first character */
   ,&GUI_Font30_Prop60 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop58 = {
-   0x5C04 /* first character */
-  ,0x5C04 /* last character  */
+   0x5B8C /* first character */
+  ,0x5B8C /* last character  */
   ,&GUI_Font30_CharInfo[123] /* address of first character */
   ,&GUI_Font30_Prop59 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop57 = {
-   0x5B9A /* first character */
-  ,0x5B9A /* last character  */
-  ,&GUI_Font30_CharInfo[122] /* address of first character */
+   0x5B57 /* first character */
+  ,0x5B58 /* last character  */
+  ,&GUI_Font30_CharInfo[121] /* address of first character */
   ,&GUI_Font30_Prop58 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop56 = {
-   0x5B8C /* first character */
-  ,0x5B8C /* last character  */
-  ,&GUI_Font30_CharInfo[121] /* address of first character */
+   0x5931 /* first character */
+  ,0x5931 /* last character  */
+  ,&GUI_Font30_CharInfo[120] /* address of first character */
   ,&GUI_Font30_Prop57 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop55 = {
-   0x5B57 /* first character */
-  ,0x5B58 /* last character  */
+   0x5929 /* first character */
+  ,0x5929 /* last character  */
   ,&GUI_Font30_CharInfo[119] /* address of first character */
   ,&GUI_Font30_Prop56 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop54 = {
-   0x5931 /* first character */
-  ,0x5931 /* last character  */
+   0x590D /* first character */
+  ,0x590D /* last character  */
   ,&GUI_Font30_CharInfo[118] /* address of first character */
   ,&GUI_Font30_Prop55 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop53 = {
-   0x5929 /* first character */
-  ,0x5929 /* last character  */
+   0x5904 /* first character */
+  ,0x5904 /* last character  */
   ,&GUI_Font30_CharInfo[117] /* address of first character */
   ,&GUI_Font30_Prop54 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop52 = {
-   0x590D /* first character */
-  ,0x590D /* last character  */
+   0x58F0 /* first character */
+  ,0x58F0 /* last character  */
   ,&GUI_Font30_CharInfo[116] /* address of first character */
   ,&GUI_Font30_Prop53 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop51 = {
-   0x5904 /* first character */
-  ,0x5904 /* last character  */
+   0x578B /* first character */
+  ,0x578B /* last character  */
   ,&GUI_Font30_CharInfo[115] /* address of first character */
   ,&GUI_Font30_Prop52 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop50 = {
-   0x58F0 /* first character */
-  ,0x58F0 /* last character  */
+   0x5730 /* first character */
+  ,0x5730 /* last character  */
   ,&GUI_Font30_CharInfo[114] /* address of first character */
   ,&GUI_Font30_Prop51 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop49 = {
-   0x578B /* first character */
-  ,0x578B /* last character  */
+   0x5728 /* first character */
+  ,0x5728 /* last character  */
   ,&GUI_Font30_CharInfo[113] /* address of first character */
   ,&GUI_Font30_Prop50 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop48 = {
-   0x5730 /* first character */
-  ,0x5730 /* last character  */
+   0x56FD /* first character */
+  ,0x56FD /* last character  */
   ,&GUI_Font30_CharInfo[112] /* address of first character */
   ,&GUI_Font30_Prop49 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop47 = {
-   0x5728 /* first character */
-  ,0x5728 /* last character  */
+   0x56DE /* first character */
+  ,0x56DE /* last character  */
   ,&GUI_Font30_CharInfo[111] /* address of first character */
   ,&GUI_Font30_Prop48 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop46 = {
-   0x56FD /* first character */
-  ,0x56FD /* last character  */
+   0x56DB /* first character */
+  ,0x56DB /* last character  */
   ,&GUI_Font30_CharInfo[110] /* address of first character */
   ,&GUI_Font30_Prop47 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop45 = {
-   0x56DE /* first character */
-  ,0x56DE /* last character  */
+   0x544A /* first character */
+  ,0x544A /* last character  */
   ,&GUI_Font30_CharInfo[109] /* address of first character */
   ,&GUI_Font30_Prop46 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop44 = {
-   0x56DB /* first character */
-  ,0x56DB /* last character  */
+   0x542F /* first character */
+  ,0x542F /* last character  */
   ,&GUI_Font30_CharInfo[108] /* address of first character */
   ,&GUI_Font30_Prop45 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop43 = {
-   0x544A /* first character */
-  ,0x544A /* last character  */
+   0x5426 /* first character */
+  ,0x5426 /* last character  */
   ,&GUI_Font30_CharInfo[107] /* address of first character */
   ,&GUI_Font30_Prop44 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop42 = {
-   0x542F /* first character */
-  ,0x542F /* last character  */
+   0x540C /* first character */
+  ,0x540C /* last character  */
   ,&GUI_Font30_CharInfo[106] /* address of first character */
   ,&GUI_Font30_Prop43 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop41 = {
-   0x5426 /* first character */
-  ,0x5426 /* last character  */
+   0x53F7 /* first character */
+  ,0x53F7 /* last character  */
   ,&GUI_Font30_CharInfo[105] /* address of first character */
   ,&GUI_Font30_Prop42 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop40 = {
-   0x540C /* first character */
-  ,0x540C /* last character  */
+   0x53F0 /* first character */
+  ,0x53F0 /* last character  */
   ,&GUI_Font30_CharInfo[104] /* address of first character */
   ,&GUI_Font30_Prop41 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop39 = {
-   0x53F7 /* first character */
-  ,0x53F7 /* last character  */
+   0x53E3 /* first character */
+  ,0x53E3 /* last character  */
   ,&GUI_Font30_CharInfo[103] /* address of first character */
   ,&GUI_Font30_Prop40 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop38 = {
-   0x53F0 /* first character */
-  ,0x53F0 /* last character  */
+   0x53D6 /* first character */
+  ,0x53D6 /* last character  */
   ,&GUI_Font30_CharInfo[102] /* address of first character */
   ,&GUI_Font30_Prop39 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop37 = {
-   0x53E3 /* first character */
-  ,0x53E3 /* last character  */
+   0x53D1 /* first character */
+  ,0x53D1 /* last character  */
   ,&GUI_Font30_CharInfo[101] /* address of first character */
   ,&GUI_Font30_Prop38 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop36 = {
-   0x53D6 /* first character */
-  ,0x53D6 /* last character  */
+   0x53CD /* first character */
+  ,0x53CD /* last character  */
   ,&GUI_Font30_CharInfo[100] /* address of first character */
   ,&GUI_Font30_Prop37 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop35 = {
-   0x53D1 /* first character */
-  ,0x53D1 /* last character  */
+   0x538B /* first character */
+  ,0x538B /* last character  */
   ,&GUI_Font30_CharInfo[ 99] /* address of first character */
   ,&GUI_Font30_Prop36 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop34 = {
-   0x53CD /* first character */
-  ,0x53CD /* last character  */
+   0x5382 /* first character */
+  ,0x5382 /* last character  */
   ,&GUI_Font30_CharInfo[ 98] /* address of first character */
   ,&GUI_Font30_Prop35 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop33 = {
-   0x538B /* first character */
-  ,0x538B /* last character  */
+   0x5373 /* first character */
+  ,0x5373 /* last character  */
   ,&GUI_Font30_CharInfo[ 97] /* address of first character */
   ,&GUI_Font30_Prop34 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop32 = {
-   0x5382 /* first character */
-  ,0x5382 /* last character  */
+   0x5370 /* first character */
+  ,0x5370 /* last character  */
   ,&GUI_Font30_CharInfo[ 96] /* address of first character */
   ,&GUI_Font30_Prop33 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop31 = {
-   0x5373 /* first character */
-  ,0x5373 /* last character  */
+   0x5355 /* first character */
+  ,0x5355 /* last character  */
   ,&GUI_Font30_CharInfo[ 95] /* address of first character */
   ,&GUI_Font30_Prop32 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop30 = {
-   0x5370 /* first character */
-  ,0x5370 /* last character  */
+   0x52A8 /* first character */
+  ,0x52A8 /* last character  */
   ,&GUI_Font30_CharInfo[ 94] /* address of first character */
   ,&GUI_Font30_Prop31 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop29 = {
-   0x5355 /* first character */
-  ,0x5355 /* last character  */
+   0x524D /* first character */
+  ,0x524D /* last character  */
   ,&GUI_Font30_CharInfo[ 93] /* address of first character */
   ,&GUI_Font30_Prop30 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop28 = {
-   0x524D /* first character */
-  ,0x524D /* last character  */
+   0x5230 /* first character */
+  ,0x5230 /* last character  */
   ,&GUI_Font30_CharInfo[ 92] /* address of first character */
   ,&GUI_Font30_Prop29 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop27 = {
-   0x5230 /* first character */
-  ,0x5230 /* last character  */
+   0x5206 /* first character */
+  ,0x5206 /* last character  */
   ,&GUI_Font30_CharInfo[ 91] /* address of first character */
   ,&GUI_Font30_Prop28 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop26 = {
-   0x5206 /* first character */
-  ,0x5206 /* last character  */
+   0x51FA /* first character */
+  ,0x51FA /* last character  */
   ,&GUI_Font30_CharInfo[ 90] /* address of first character */
   ,&GUI_Font30_Prop27 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop25 = {
-   0x51FA /* first character */
-  ,0x51FA /* last character  */
+   0x5185 /* first character */
+  ,0x5185 /* last character  */
   ,&GUI_Font30_CharInfo[ 89] /* address of first character */
   ,&GUI_Font30_Prop26 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop24 = {
-   0x5185 /* first character */
-  ,0x5185 /* last character  */
+   0x5173 /* first character */
+  ,0x5173 /* last character  */
   ,&GUI_Font30_CharInfo[ 88] /* address of first character */
   ,&GUI_Font30_Prop25 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop23 = {
-   0x5173 /* first character */
-  ,0x5173 /* last character  */
+   0x5171 /* first character */
+  ,0x5171 /* last character  */
   ,&GUI_Font30_CharInfo[ 87] /* address of first character */
   ,&GUI_Font30_Prop24 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop22 = {
-   0x5171 /* first character */
-  ,0x5171 /* last character  */
+   0x5165 /* first character */
+  ,0x5165 /* last character  */
   ,&GUI_Font30_CharInfo[ 86] /* address of first character */
   ,&GUI_Font30_Prop23 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop21 = {
-   0x5165 /* first character */
-  ,0x5165 /* last character  */
+   0x5143 /* first character */
+  ,0x5143 /* last character  */
   ,&GUI_Font30_CharInfo[ 85] /* address of first character */
   ,&GUI_Font30_Prop22 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop20 = {
-   0x5143 /* first character */
-  ,0x5143 /* last character  */
+   0x50A8 /* first character */
+  ,0x50A8 /* last character  */
   ,&GUI_Font30_CharInfo[ 84] /* address of first character */
   ,&GUI_Font30_Prop21 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop19 = {
-   0x50A8 /* first character */
-  ,0x50A8 /* last character  */
+   0x4FE1 /* first character */
+  ,0x4FE1 /* last character  */
   ,&GUI_Font30_CharInfo[ 83] /* address of first character */
   ,&GUI_Font30_Prop20 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop18 = {
-   0x4FE1 /* first character */
-  ,0x4FE1 /* last character  */
+   0x4F5C /* first character */
+  ,0x4F5C /* last character  */
   ,&GUI_Font30_CharInfo[ 82] /* address of first character */
   ,&GUI_Font30_Prop19 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop17 = {
-   0x4F5C /* first character */
-  ,0x4F5C /* last character  */
+   0x4F53 /* first character */
+  ,0x4F53 /* last character  */
   ,&GUI_Font30_CharInfo[ 81] /* address of first character */
   ,&GUI_Font30_Prop18 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop16 = {
-   0x4F53 /* first character */
-  ,0x4F53 /* last character  */
+   0x4EF6 /* first character */
+  ,0x4EF6 /* last character  */
   ,&GUI_Font30_CharInfo[ 80] /* address of first character */
   ,&GUI_Font30_Prop17 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop15 = {
-   0x4EF6 /* first character */
-  ,0x4EF6 /* last character  */
+   0x4EE5 /* first character */
+  ,0x4EE5 /* last character  */
   ,&GUI_Font30_CharInfo[ 79] /* address of first character */
   ,&GUI_Font30_Prop16 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop14 = {
-   0x4EE5 /* first character */
-  ,0x4EE5 /* last character  */
-  ,&GUI_Font30_CharInfo[ 78] /* address of first character */
+   0x4E3A /* first character */
+  ,0x4E3B /* last character  */
+  ,&GUI_Font30_CharInfo[ 77] /* address of first character */
   ,&GUI_Font30_Prop15 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop13 = {
-   0x4E3A /* first character */
-  ,0x4E3B /* last character  */
+   0x4E2D /* first character */
+  ,0x4E2D /* last character  */
   ,&GUI_Font30_CharInfo[ 76] /* address of first character */
   ,&GUI_Font30_Prop14 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop12 = {
-   0x4E2D /* first character */
-  ,0x4E2D /* last character  */
+   0x4E0D /* first character */
+  ,0x4E0D /* last character  */
   ,&GUI_Font30_CharInfo[ 75] /* address of first character */
   ,&GUI_Font30_Prop13 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop11 = {
-   0x4E0D /* first character */
-  ,0x4E0D /* last character  */
-  ,&GUI_Font30_CharInfo[ 74] /* address of first character */
+   0x4E0A /* first character */
+  ,0x4E0B /* last character  */
+  ,&GUI_Font30_CharInfo[ 73] /* address of first character */
   ,&GUI_Font30_Prop12 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop10 = {
-   0x4E0A /* first character */
-  ,0x4E0B /* last character  */
+   0x4E00 /* first character */
+  ,0x4E00 /* last character  */
   ,&GUI_Font30_CharInfo[ 72] /* address of first character */
   ,&GUI_Font30_Prop11 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop9 = {
-   0x4E00 /* first character */
-  ,0x4E00 /* last character  */
+   0x25BC /* first character */
+  ,0x25BC /* last character  */
   ,&GUI_Font30_CharInfo[ 71] /* address of first character */
   ,&GUI_Font30_Prop10 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop8 = {
-   0x25BC /* first character */
-  ,0x25BC /* last character  */
+   0x25B2 /* first character */
+  ,0x25B2 /* last character  */
   ,&GUI_Font30_CharInfo[ 70] /* address of first character */
   ,&GUI_Font30_Prop9 /* pointer to next GUI_FONT_PROP_EXT */
 };
 
 GUI_CONST_STORAGE GUI_FONT_PROP_EXT GUI_Font30_Prop7 = {
-   0x25B2 /* first character */
-  ,0x25B2 /* last character  */
+   0x2193 /* first character */
+  ,0x2193 /* last character  */
   ,&GUI_Font30_CharInfo[ 69] /* address of first character */
   ,&GUI_Font30_Prop8 /* pointer to next GUI_FONT_PROP_EXT */
 };
