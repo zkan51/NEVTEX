@@ -8,15 +8,8 @@
 #include "dlg.h"
 #include "sound.h"
 #define ID_BUTTON_0 (GUI_ID_USER + 0x11)
-	static void _AddMenuItem(MENU_Handle hMenu, MENU_Handle hSubmenu, const char* pText, U16 Id, U16 Flags) {
-  MENU_ITEM_DATA Item;
 
-  Item.pText    = pText;
-  Item.hSubmenu = hSubmenu;
-  Item.Flags    = Flags;
-  Item.Id       = Id;
-  MENU_AddItem(hMenu, &Item);
-}
+extern char Bright;
 void MainTask(void)
 {
    GUI_MEMDEV_Handle hMem0;
@@ -38,12 +31,13 @@ void MainTask(void)
    GUI_MEMDEV_Select(0);
    GUI_MEMDEV_CopyToLCD(hMem0);
    GUI_MEMDEV_Delete(hMem0);
-   
+	
    //sysInit();
    //MNT_initSetting();
-   
+   PWM_SET(Bright*2);
+			
    GUI_Delay(1000);
-    GUI_Clear();
+   GUI_Clear();
    //创建字体
    GUI_UC_SetEncodeUTF8();	
    //字体设置	//GUI_SetDefaultFont (&SIF_Font);
@@ -59,20 +53,6 @@ void MainTask(void)
 			MENU_SetDefaultBkColor(MENU_CI_ENABLED,GUI_WHITE);
 			MENU_SetDefaultBkColor(MENU_CI_SELECTED,GUI_BLACK);
 		//MENU_SetDefaultTextColor()
-   //创建窗口 
-//   sldWinCreate();
-//     _sldWinCreate();
-//     WM_SetFocus(_sldWinCreate());
-//    confirmWin  = confirmWinCreate();
-// 	 WM_ShowWindow (confirmWin);
-//    mntSettingWin  = mntSettingWinCreate(); 
-// //  _mntSettingWin  = _mntSettingWinCreate();
-//    subWins[0]  = sub0WinCreate(); 
-//    subWins[1]  = sub1WinCreate();
-//    subWins[2]  = sub2WinCreate();
-//    subWins[3]  = _sub3WinCreate();
-//    menuWin  = menuWinCreate();
-//    mapWin = mapWinCreate();
 
 //  Window Creat
     PrintWin = PrintWinCreate();

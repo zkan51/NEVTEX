@@ -11,8 +11,9 @@
 #define USER_MSG_BRING     (WM_USER + 0x06)
 #define USER_MSG_DFULT_CNT (WM_USER + 0x07)
 
-#define USER_MSG_SOFTUPDATE (WM_USER + 0x08)
-#define USER_MSG_PRINTEND   (WM_USER + 0x09)
+#define USER_MSG_SOFTUPDATE (WM_USER + 0x08) //软件更新
+#define USER_MSG_PRINTEND   (WM_USER + 0x09) //打印
+#define USER_MSG_LANGUAGE   (WM_USER + 0x0a) //语言选择
 
 #define STORE_SETTING   1
 #define CANCEL_MONITED  2

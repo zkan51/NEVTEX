@@ -6,7 +6,7 @@
 #include "28.h"
 #include "str.h"
 #include "info.h"
-
+#include "LANGUAGE.h"
 
 #define ID_WINDOW_0  (GUI_ID_USER + 0x00)
 
@@ -26,19 +26,13 @@ static char tipText[50] = {"未检测到系统更新文件"};
 extern CHAR StarPrint;
 extern WM_HWIN hMultiEdit;
 extern WM_HTIMER PrintTimer;
+extern CHAR Language;
 static char Printing = 0;
 CHAR *ptipText = tipText;
 WM_HTIMER CheckTimer;
+static const TOOLTIP *pTooltip;
 
 CHAR pbuff[800] ={""};
-
-static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
-  { WINDOW_CreateIndirect, "ETWin", ID_WINDOW_0, 200,100, 500, 200, 0, 0x0, 0 },
-		{ TEXT_CreateIndirect, "ETWin", ID_TEXT_0, 0,0, 100, 180, 0, 0x0, 0 },
-  { BUTTON_CreateIndirect, "bt", ID_BUTTON_0, 20,150, 50, 30, 0, 0x0, 0 },
-		{ BUTTON_CreateIndirect, "bt", ID_BUTTON_1, 100,150, 50, 30, 0, 0x0, 0 },
-};	
-
 
 static void myButton (WM_MESSAGE *pMsg)
 {
@@ -122,6 +116,7 @@ static void _cbDialog(WM_MESSAGE *pMsg)
 													break;
 								
 					   case	WM_TIMER:
+									    pTooltip = &Lgutooltip[Language];
 									    if (Printing == 0) //打印
 													{
 																MULTIEDIT_GetText(hMultiEdit,pbuff,1000);
@@ -139,7 +134,7 @@ static void _cbDialog(WM_MESSAGE *pMsg)
 														{
 															  Printing = 0;
 																	ptipText = "打印完成";
-																	TEXT_SetText(ToolTipText0,ptipText);
+																	TEXT_SetText(ToolTipText0,pTooltip->Text1[5]);
 																	WM_DeleteTimer(PrintTimer);
 														}
 									    break;
@@ -171,10 +166,10 @@ static void _cbDialog(WM_MESSAGE *pMsg)
 													//
 													// Initialization of 'Text'
 													//
-													TEXT_CreateEx (0,   40,  400, 40, hWin,WM_CF_SHOW,0,ID_TEXT_0,NULL);
+													TEXT_CreateEx (0,   20,  400, 70, hWin,WM_CF_SHOW,0,ID_TEXT_0,NULL);
 													ToolTipText0 = WM_GetDialogItem(pMsg->hWin, ID_TEXT_0);
 													TEXT_SetTextColor (ToolTipText0,GUI_BLACK);
-													TEXT_SetTextAlign(ToolTipText0,TEXT_CF_HCENTER);
+													TEXT_SetTextAlign(ToolTipText0,TEXT_CF_HCENTER | TEXT_CF_VCENTER);
 													TEXT_SetText(ToolTipText0, ptipText);
 													TEXT_SetFont(ToolTipText0, &GUI_Font30);
 													

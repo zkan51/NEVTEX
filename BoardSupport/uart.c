@@ -10,11 +10,12 @@
 #include "MainTask.h" 
 #include <ucos_ii.h>
 #include "sound.h"
+#include "pwm.h"
 
 
 extern uint8_t SND[4][6];
 extern int isKeyTrigged;
-
+extern char Bright;
 volatile Bool Doubleclick  = FALSE;
 volatile Bool isReleasedDet  = FALSE;
 
@@ -91,7 +92,32 @@ void UART2_IRQHandler(void)
 		{	
  		  UART_Receive(UART_2, &tmpc, 1, NONE_BLOCKING);
 			  if(tmpc >= GUI_KEY_INT  &&  tmpc <= GUI_KEY_PGDOWN)
-			     GUI_StoreKeyMsg(tmpc, 1);
+					{
+						  isKeyTrigged  = 1;
+						  switch (tmpc)
+						  {
+									 case GUI_KEY_DIM1:
+											    if (Bright > 1)
+															{
+ 																Bright--;
+	  										    PWM_SET(Bright*2);
+															}
+											    break;
+										
+										case GUI_KEY_DIM2:
+															if (Bright < 5)
+															{
+																 Bright++;
+											      PWM_SET(Bright*2);
+															}
+											    break;
+
+										default:
+											    GUI_StoreKeyMsg(tmpc,1);
+										     break;
+						  }
+					}
+			     //GUI_StoreKeyMsg(tmpc, 1);
 //     if(tmpc >= GUI_KEY_MENU  &&  tmpc <= GUI_KEY_PGDOWN)   
 // 			 {   
 //              isKeyTrigged  = 1;
@@ -121,11 +147,12 @@ void UART2_IRQHandler(void)
 
 PUTCHAR_PROTOTYPE//重定向C printf函数到Uart0
 {
-	UART_Send((UART_ID_Type)UART_0, (uint8_t*) &ch, 1, BLOCKING);  /* 发送一个字符到UART */
+	UART_Send((UART_ID_Type)UART_2, (uint8_t*) &ch, 1, BLOCKING);  /* 发送一个字符到UART */
 	while (UART_CheckBusy((UART_ID_Type)UART_2) == SET);/* 等于发送完成，THR必须为空*/
   return ch;
 }
 
 /************************************* End *************************************/
+
 
 

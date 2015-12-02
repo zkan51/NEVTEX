@@ -6,12 +6,15 @@
 #include "28.h"
 #include "str.h"
 #include "info.h"
+#include "LANGUAGE.h"
 WM_HWIN CheckWin;
 static CHAR TimerIndex = 0;
 WM_HWIN CheckText[8];
 static CHAR text[50] = {""};
 CHAR *pchecktext = text;
 extern WM_HTIMER CheckTimer;
+extern CHAR Language;
+static const CHECKWIN *pLanguage;
 static void _cbDialog(WM_MESSAGE *pMsg)
 {
 	 WM_KEY_INFO *pKEY;
@@ -23,7 +26,9 @@ static void _cbDialog(WM_MESSAGE *pMsg)
 									GUI_Clear();
 					    GUI_SetFont(&GUI_Font30);
 				     GUI_SetColor(GUI_BLACK);
-				     GUI_DispStringAt("自检中:",100,50);
+				     if (Language == 0)
+				         GUI_DispStringAt("自检中...",100,50);
+									else GUI_DispStringAt("CHECKING...",100,50);
 									break;
 			 case WM_KEY:
 					    pKEY = (WM_KEY_INFO*)pMsg->Data.p;
@@ -50,59 +55,60 @@ static void _cbDialog(WM_MESSAGE *pMsg)
 				
 				case WM_TIMER:
 				{
+					    pLanguage = &Lgucheckwin[Language];
 									if (TimerIndex == 0)
 									{
-										  pchecktext = "国际频道 . . . . . . . . . . . . . . . . . . . . . 通过";
-										  TEXT_SetText(CheckText[0],pchecktext);
+										  //pchecktext = "国际频道 . . . . . . . . . . . . . . . . . . . . . 通过";
+										  TEXT_SetText(CheckText[0],pLanguage->CheckItem[0]);
 										  WM_RestartTimer(CheckTimer,2000);
 										  TimerIndex++;
 									}
 									else if (TimerIndex == 1)
 									{
-										  pchecktext = "本地频道I. . . . . . . . . . . . . . . . . . . . . 通过";
-										  TEXT_SetText(CheckText[1],pchecktext);
+										  //pchecktext = "本地频道I. . . . . . . . . . . . . . . . . . . . . 通过";
+										  TEXT_SetText(CheckText[1],pLanguage->CheckItem[1]);
 										  WM_RestartTimer(CheckTimer,2000);
 												TimerIndex++;
 									}
 									else if (TimerIndex == 2)
 									{
-										  pchecktext = "本地频道II . . . . . . . . . . . . . . . . . . . . 通过";
-										  TEXT_SetText(CheckText[2],pchecktext);
+										  //pchecktext = "本地频道II . . . . . . . . . . . . . . . . . . . . 通过";
+										  TEXT_SetText(CheckText[2],pLanguage->CheckItem[2]);
 										  WM_RestartTimer(CheckTimer,2000);
 												TimerIndex++;
 									}
 									else if (TimerIndex == 3)
 									{
-										  pchecktext = "中文频道 . . . . . . . . . . . . . . . . . . . . . 通过";
-										  TEXT_SetText(CheckText[3],pchecktext);
+										  //pchecktext = "中文频道 . . . . . . . . . . . . . . . . . . . . . 通过";
+										  TEXT_SetText(CheckText[3],pLanguage->CheckItem[3]);
 										  WM_RestartTimer(CheckTimer,2000);
 												TimerIndex++;
 									}
 									else if (TimerIndex == 4)
 									{
-										  pchecktext = "数据内存 . . . . . . . . . . . . . . . . . . . . . 通过";
-										  TEXT_SetText(CheckText[4],pchecktext);
+										  //pchecktext = "数据内存 . . . . . . . . . . . . . . . . . . . . . 通过";
+										  TEXT_SetText(CheckText[4],pLanguage->CheckItem[4]);
 										  WM_RestartTimer(CheckTimer,2000);
 												TimerIndex++;
 									}
 									else if (TimerIndex == 5)
 									{
-										  pchecktext = "天线单元 . . . . . . . . . . . . . . . . . . . . . 通过";
-										  TEXT_SetText(CheckText[5],pchecktext);
+										  //pchecktext = "天线单元 . . . . . . . . . . . . . . . . . . . . . 通过";
+										  TEXT_SetText(CheckText[5],pLanguage->CheckItem[5]);
 										  WM_RestartTimer(CheckTimer,2000);
 												TimerIndex++;
 									}
 									else if (TimerIndex == 6)
 									{
-										  pchecktext = "打印端口 . . . . . . . . . . . . . . . . . . . . . 通过";
-										  TEXT_SetText(CheckText[6],pchecktext);
+										  //pchecktext = "打印端口 . . . . . . . . . . . . . . . . . . . . . 通过";
+										  TEXT_SetText(CheckText[6],pLanguage->CheckItem[6]);
 										  WM_RestartTimer(CheckTimer,2000);
 												TimerIndex++;
 									}
-									else if (TimerIndex == 6)
+									else if (TimerIndex == 7)
 									{
-										  pchecktext = "报警铃声 . . . . . . . . . . . . . . . . . . . .  已执行";
-										  TEXT_SetText(CheckText[7],pchecktext);
+										  //pchecktext = "报警铃声 . . . . . . . . . . . . . . . . . . . .  已执行";
+										  TEXT_SetText(CheckText[7],pLanguage->CheckItem[7]);
 										  WM_RestartTimer(CheckTimer,2000);
 												TimerIndex = 0;
 										  WM_DeleteTimer(CheckTimer);

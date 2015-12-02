@@ -7,6 +7,7 @@
 #include "str.h"
 #include "info.h"
 #include "POWER.h"
+#include "LANGUAGE.h"
 #define ID_WINDIW_0 (GUI_ID_USER + 0x00)
 
 #define ID_MULTIEDIT_0   (GUI_ID_USER + 0x10)
@@ -16,27 +17,32 @@
 #define ID_TEXT_1 (GUI_ID_USER + 0x04)
 #define ID_TEXT_2 (GUI_ID_USER + 0x05)
 #define ID_TEXT_3 (GUI_ID_USER + 0x06)
+#define ID_TEXT_4 (GUI_ID_USER + 0x07)
+#define ID_TEXT_5 (GUI_ID_USER + 0x08)
+#define ID_TEXT_6 (GUI_ID_USER + 0x09)
 #define ID_MENU   (GUI_ID_USER + 0x50)
 #define ID_PrintMenu (GUI_ID_USER + 0x51)
 
-WM_HWIN hMultiEdit;
-SCROLLBAR_Handle hScrollbarv;
-SCROLLBAR_Handle hScrollbarh;
-const GUI_RECT Scrollbar = {709,0,719,355}; 
-GUI_RECT ScrollbarI ;
+WM_HWIN hMultiEdit; 
+SCROLLBAR_Handle hScrollbarv; //滚动条
+WM_HWIN Item_InfoText[9];
 extern int InfoId;
 extern char SelRow;
 extern CHAR* pCannel;
 extern CHAR MenuSel;
+static const INFOTEXT *pLanguage; 
+extern CHAR Language;
 static const GUI_WIDGET_CREATE_INFO _aDialogCreate[] = {
   { WINDOW_CreateIndirect, "ETWin", ID_WINDIW_0, 0,0, 800, 480, 0, 0x0, 0 },
 		{ BUTTON_CreateIndirect, "Button",ID_BUTTON_0,90,30,50,30,0,0,0},
   { MULTIEDIT_CreateIndirect,"mEdit", ID_MULTIEDIT_0, 40, 100, 720, 335, 0, 0, 0},
 		{ TEXT_CreateIndirect,    "lock",  ID_TEXT_0, 270,25,25,30,0,0,0},
-
+  { TEXT_CreateIndirect,    "MSG",   ID_TEXT_4, 40,30,60,30,0,0,0},
 		{ TEXT_CreateIndirect,    "INT",  ID_TEXT_1, 340,28,85,30,0,0,0},
 		{ TEXT_CreateIndirect,    "LOC",  ID_TEXT_2, 430,28,85,30,0,0,0},
   { TEXT_CreateIndirect,    "time", ID_TEXT_3, 520,28,230,30,0,0,0},
+  { TEXT_CreateIndirect,    "ERROR RATE", ID_TEXT_5, 590,65,200,30,0,0,0},
+  { TEXT_CreateIndirect,    "DISTANCE", ID_TEXT_6, 570,435,200,30,0,0,0}
 };
 
 static void InfoButton (WM_MESSAGE *pMsg)
@@ -50,6 +56,13 @@ static void InfoButton (WM_MESSAGE *pMsg)
 	//int16_t SelRow = 0;
 	switch (pMsg->MsgId)
 	{
+		case USER_MSG_LANGUAGE:
+			    pLanguage = &Lguinfotext[Language]; 
+		     TEXT_SetText(Item_InfoText[0],pLanguage->Button);
+		     TEXT_SetText(Item_InfoText[5],pLanguage->ErrorRate);
+		     TEXT_SetText(Item_InfoText[6],pLanguage->Distance);
+			    break;
+		
 		case WM_KEY:
 			    key = (WM_KEY_INFO*)pMsg->Data.p;
 							switch (key->Key)
@@ -114,11 +127,9 @@ static void InfoButton (WM_MESSAGE *pMsg)
 														break;
 										
 									case GUI_KEY_LEFT:
-														SCROLLBAR_AddValue(hScrollbarh,-50);
 														break;
 									
 									case GUI_KEY_RIGHT:
-														SCROLLBAR_AddValue(hScrollbarh,50);
 														break;
 								
 									case GUI_KEY_ESCAPE:
@@ -208,20 +219,21 @@ static void _cbDialog(WM_MESSAGE *pMsg)
 								GUI_SetBkColor(GUI_WHITE);
 								GUI_Clear();
 								GUI_SetColor (GUI_BLACK);
-								GUI_DispStringAt("信息",40,30);
+								//GUI_DispStringAt("xx",40,30);
 								GUI_AA_DrawLine(190,0,220,60);
 								GUI_AA_DrawLine(220,60,800,60);
-								GUI_DispStringAt("距发射站台距离:486海里",520,435);
-								GUI_DispStringAt("误字符率:00%",620,65);
+// 								GUI_DispStringAt("距发射站台距离:486海里",520,435);
+// 								GUI_DispStringAt("误字符率:00%",620,65);
 				    GUI_PNG_Draw(&acPOWER,sizeof(acPOWER),755,35);
 								break;
 			
 			case WM_INIT_DIALOG:
+				    pLanguage = &Lguinfotext[Language];
 								hButton = WM_GetDialogItem (hWin,ID_BUTTON_0);
 								BUTTON_SetBkColor (hButton,BUTTON_CI_UNPRESSED,GUI_WHITE);
 								BUTTON_SetTextColor (hButton,BUTTON_CI_UNPRESSED,GUI_BLACK);
 								BUTTON_SetTextAlign (hButton,GUI_TA_HCENTER|GUI_TA_VCENTER);
-								BUTTON_SetText(hButton,"所有信息");
+								BUTTON_SetText(hButton,"");
 								BUTTON_SetFocusColor (hButton,GUI_WHITE);
 								WIDGET_SetEffect (hButton,&WIDGET_Effect_None);
 								WM_SetCallback (hButton,&InfoButton);	
@@ -233,22 +245,34 @@ static void _cbDialog(WM_MESSAGE *pMsg)
 								MULTIEDIT_SetTextColor(hMultiEdit, MULTIEDIT_CI_READONLY,GUI_RED);
 								MULTIEDIT_SetWrapWord(hMultiEdit);
 								hScrollbarv = SCROLLBAR_CreateAttached(hMultiEdit,SCROLLBAR_CF_VERTICAL);
-							
-								// TEXT0
-								hText = WM_GetDialogItem(hWin,ID_TEXT_1);
-								WM_SetCallback(hText,&mytext);
+							 
+			     // WM_HWIN - TEXT 
+			     Item_InfoText[0] = WM_GetDialogItem(hWin,ID_TEXT_4); //MSG
+			     Item_InfoText[1] = WM_GetDialogItem(hWin,ID_TEXT_0); //锁
+			     Item_InfoText[2] = WM_GetDialogItem(hWin,ID_TEXT_1); //INT
+								Item_InfoText[3] = WM_GetDialogItem(hWin,ID_TEXT_2); //CHS,LOC1,LOC2
+								Item_InfoText[4] = WM_GetDialogItem(hWin,ID_TEXT_3); //time
+								Item_InfoText[5] = WM_GetDialogItem(hWin,ID_TEXT_5); //Error Rate
+								Item_InfoText[6] = WM_GetDialogItem(hWin,ID_TEXT_6); //DISTANCE\
 								
-								// TEXT1
-								hText = WM_GetDialogItem(hWin,ID_TEXT_2);
-								WM_SetCallback(hText,&mytext);	
+								// WMCALLBACK _TEXT
+								WM_SetCallback(Item_InfoText[2],&mytext);
+								WM_SetCallback(Item_InfoText[3],&mytext);
+        
+								TEXT_SetText(Item_InfoText[4],"UTC 2015.10.24 17:30");
+        TEXT_SetText(Item_InfoText[0],pLanguage->Button);
+								TEXT_SetText(Item_InfoText[5],pLanguage->ErrorRate);
+								TEXT_SetText(Item_InfoText[6],pLanguage->Distance);
+// 								// TIME
+// 								hText = WM_GetDialogItem(hWin,ID_TEXT_3);
+// 								TEXT_SetTextAlign(hText,TEXT_CF_VCENTER);
+// 								TEXT_SetFont(hText,&GUI_Font30);
+// 								TEXT_SetText(hText,"UTC 2015.10.24 17:30");
 								
-								// TIME
-								hText = WM_GetDialogItem(hWin,ID_TEXT_3);
-								TEXT_SetTextAlign(hText,TEXT_CF_VCENTER);
-								TEXT_SetFont(hText,&GUI_Font30);
-								TEXT_SetText(hText,"UTC 2015.10.24 17:30");
+								// MSG
+								
 								break;
-
+       
 			default:
 			     WM_DefaultProc(pMsg);
 		      break;
